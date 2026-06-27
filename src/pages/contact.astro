@@ -2,6 +2,7 @@
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import PageHero from '../components/PageHero.astro';
 import { SITE_TITLE } from '../consts';
 ---
 
@@ -9,55 +10,27 @@ import { SITE_TITLE } from '../consts';
 <html lang="tr">
 	<head>
 		<BaseHead title={`İletişim | ${SITE_TITLE}`} description="Talep veya öneri gönderme hattı." />
-		<style>
-			main { max-width: 600px; margin: 0 auto; padding: 3rem 1rem; }
-			.contact-form {
-				background: var(--panel-color);
-				border: 1px solid var(--border-color);
-				border-radius: 6px;
-				padding: 2rem;
-				font-family: var(--font-mono);
-			}
-			label { display: block; margin: 1rem 0 0.5rem; font-size: 0.85rem; color: var(--text-muted); }
-			input, textarea {
-				width: 100%;
-				background: #000;
-				border: 1px solid var(--border-color);
-				padding: 0.8rem;
-				color: var(--text-main);
-				font-family: var(--font-mono);
-				border-radius: 4px;
-				box-sizing: border-box;
-			}
-			button {
-				margin-top: 1.5rem;
-				background: var(--accent-green);
-				color: #000;
-				border: none;
-				padding: 0.8rem 1.5rem;
-				font-family: var(--font-mono);
-				font-weight: bold;
-				cursor: pointer;
-				border-radius: 4px;
-			}
-			button:hover { opacity: 0.9; }
-		</style>
 	</head>
 	<body>
 		<Header />
-		<main>
-			<div class="contact-form">
-				<h1 style="font-size: 1.4rem; margin: 0 0 1.5rem; color: var(--text-main);">$ ./iletisim.sh</h1>
-				
-            <form action="https://formspree.io/f/xpqgrajg" method="POST">
-                <label>Adınız / Kimlik:</label>
-                <input type="text" name="identity" required placeholder="Anonim..." />
+		<main class="page-shell">
+			<PageHero
+				path="/iletisim"
+				description="Öneri, düzeltme veya iş birliği için mesaj bırak."
+			/>
 
-                <label>Mesaj / Öneri:</label>
-                <textarea name="message" rows="5" required placeholder="Buraya yaz..."></textarea>
-                
-                <button type="submit">> RUN_SEND</button>
-            </form>
+			<div class="form-panel animate-in animate-in--delay-1">
+				<p class="terminal-comment" style="margin-bottom: 1.25rem;">$ ./iletisim.sh --stdin</p>
+
+				<form action="https://formspree.io/f/xpqgrajg" method="POST">
+					<label for="identity">Adınız / Kimlik:</label>
+					<input type="text" id="identity" name="identity" required placeholder="Anonim..." />
+
+					<label for="message">Mesaj / Öneri:</label>
+					<textarea id="message" name="message" rows="5" required placeholder="Buraya yaz..."></textarea>
+
+					<button type="submit" class="btn-primary">&gt; RUN_SEND</button>
+				</form>
 			</div>
 		</main>
 		<Footer />

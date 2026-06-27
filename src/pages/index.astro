@@ -3,45 +3,53 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+
+const quickLinks = [
+	{ href: '/blog', icon: '📚', label: '~/materyaller', hint: 'Tutorials & rehberler' },
+	{ href: '/links', icon: '🔗', label: '~/bağlantılar', hint: 'Judge & kaynak havuzu' },
+	{ href: '/problems', icon: '⚡', label: '~/problems', hint: 'Seçilmiş olimpiyat soruları' },
+	{ href: '/contact', icon: '✉', label: '~/iletisim', hint: 'Öneri & geri bildirim' },
+];
 ---
 
 <!doctype html>
 <html lang="tr">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-		<style>
-			main {
-				max-width: 750px;
-				margin: 0 auto;
-				padding: 3rem 1rem;
-			}
-			.console-log {
-				background: var(--panel-color);
-				border: 1px solid var(--border-color);
-				border-radius: 6px;
-				padding: 1.5rem;
-				font-family: var(--font-mono);
-			}
-			.cursor {
-				color: var(--accent-green);
-				font-weight: bold;
-			}
-		</style>
 	</head>
 	<body>
 		<Header />
-		<main>
-			<div class="console-log">
-				<p style="margin: 0 0 1rem 0; color: var(--text-muted);">// Sistem Hazır o_o</p>
-				<h1 style="font-size: 1.7rem; margin: 0 0 1rem 0; font-family: var(--font-mono);">
-					<span class="cursor">$</span> cat hoşgeldiniz.txt
-				</h1>
-				<p style="color: var(--text-main); line-height: 1.6; font-family: var(--font-sans);">
-					Arşive hoş geldiniz. Bu platform kendi tecrübelerime göre amatörce vibe-codeladığım bir Türk CP/IOAI arşiv sitesi. Zamanla CodeForces ve AtCoder soruları da ekleyerek ve kafama estikçe tutoriallar paylaşarak sayfayı genişletmeye çalışacağım...
-				</p>
-				<p style="margin: 1.5rem 0 0 0; font-size: 0.9rem; color: var(--text-muted);">
-					Bloglarıma erişmek için <a href="/blog" style="color: var(--accent);">~/materyaller</a> kısmına göz atabilir veya kaynak havuzlarına doğrudan <a href="/links" style="color: var(--accent);">~/bağlantılar</a> üzerinden erişebilirsiniz.
-				</p>
+		<main class="page-shell">
+			<section class="terminal-panel animate-in">
+				<div class="terminal-panel__bar">
+					<span class="terminal-dot terminal-dot--red"></span>
+					<span class="terminal-dot terminal-dot--yellow"></span>
+					<span class="terminal-dot terminal-dot--green"></span>
+					<span class="terminal-panel__title">seferovic — zsh</span>
+				</div>
+				<div class="terminal-panel__body">
+					<p class="terminal-comment">// Sistem Hazır o_o</p>
+					<p class="terminal-prompt">
+						<span class="prompt-char">$</span> cat hoşgeldiniz.txt<span class="cursor-blink"></span>
+					</p>
+					<p style="color: var(--text-main); line-height: 1.7; margin: 0 0 1rem; max-width: 58ch;">
+						Arşive hoş geldiniz. Bu platform kendi tecrübelerime göre amatörce vibe-codeladığım bir Türk CP/IOAI arşiv sitesi. Zamanla CodeForces ve AtCoder soruları da ekleyerek ve kafama estikçe tutoriallar paylaşarak sayfayı genişletmeye çalışacağım...
+					</p>
+					<p style="margin: 0; font-size: 0.88rem; color: var(--text-muted); font-family: var(--font-mono);">
+						<span style="color: var(--accent-green);">→</span> Hızlı erişim aşağıda. İyi çalışmalar.
+					</p>
+				</div>
+			</section>
+
+			<div class="section-label animate-in animate-in--delay-1"># quick_access</div>
+			<div class="nav-grid animate-in animate-in--delay-2">
+				{quickLinks.map((link) => (
+					<a href={link.href} class="nav-card">
+						<span class="nav-card__icon">{link.icon}</span>
+						<span class="nav-card__label">{link.label}</span>
+						<span class="nav-card__hint">{link.hint}</span>
+					</a>
+				))}
 			</div>
 		</main>
 		<Footer />

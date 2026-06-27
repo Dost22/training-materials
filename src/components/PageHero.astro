@@ -1,0 +1,13 @@
+---
+interface Props {
+	path: string;
+	description: string;
+}
+
+const { path, description } = Astro.props;
+---
+
+<div class="page-hero animate-in">
+	<h1 class="page-hero__path"><span>~</span>{path}</h1>
+	<p class="page-hero__desc">{description}</p>
+</div>
