@@ -47,21 +47,182 @@ const aiOlympiad = [
 <html lang="tr">
 	<head>
 		<BaseHead title={`Bağlantılar | ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
-		</head>
+		<style>
+			main {
+				max-width: 800px;
+				margin: 0 auto;
+				padding: 3rem 1.5rem;
+			}
+			.intro-block {
+				margin-bottom: 2.5rem;
+				border-left: 3px solid var(--accent-green);
+				padding-left: 1.2rem;
+			}
+			.intro-block p {
+				color: var(--text-muted);
+				font-size: 0.95rem;
+				margin: 0.4rem 0 0 0;
+			}
+			.section-title {
+				font-family: var(--font-mono);
+				color: var(--accent-green);
+				font-size: 0.95rem;
+				font-weight: 600;
+				margin: 3rem 0 1.2rem 0;
+				letter-spacing: 0.5px;
+				border-bottom: 1px dashed var(--border-color);
+				padding-bottom: 0.4rem;
+			}
+			.judge-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+				gap: 0.85rem;
+			}
+			.judge-card {
+				background: var(--panel-color);
+				border: 1px solid var(--border-color);
+				border-radius: 6px;
+				padding: 1rem;
+				text-decoration: none;
+				display: flex;
+				flex-direction: column;
+				transition: border-color 0.12s ease;
+			}
+			.judge-card:hover {
+				border-color: var(--accent);
+				text-decoration: none;
+			}
+			.card-header {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin-bottom: 0.5rem;
+			}
+			.card-title {
+				color: var(--accent);
+				font-weight: 600;
+				font-size: 0.95rem;
+			}
+			.badge {
+				font-family: var(--font-mono);
+				font-size: 0.75rem;
+				background: rgba(88, 166, 255, 0.1);
+				color: var(--accent);
+				padding: 0.15rem 0.45rem;
+				border-radius: 4px;
+				border: 1px solid rgba(88, 166, 255, 0.2);
+			}
+			.card-desc {
+				color: var(--text-main);
+				font-size: 0.85rem;
+				margin: 0;
+				line-height: 1.45;
+			}
+			.ref-list {
+				display: flex;
+				flex-direction: column;
+				gap: 0.6rem;
+			}
+			.ref-row {
+				display: flex;
+				align-items: flex-start;
+				background: var(--panel-color);
+				border: 1px solid var(--border-color);
+				border-radius: 6px;
+				padding: 1rem 1.2rem;
+				text-decoration: none;
+				transition: border-color 0.12s ease, transform 0.12s ease;
+			}
+			.ref-row:hover {
+				border-color: var(--accent-green);
+				transform: translateX(3px);
+				text-decoration: none;
+			}
+			.type-tag {
+				font-family: var(--font-mono);
+				font-size: 0.75rem;
+				color: var(--text-muted);
+				min-width: 120px;
+				padding-top: 0.1rem;
+				flex-shrink: 0;
+			}
+			.ref-content {
+				display: flex;
+				flex-direction: column;
+				flex-grow: 1;
+			}
+			.ref-title {
+				color: var(--accent);
+				font-weight: 600;
+				font-size: 0.95rem;
+			}
+			.ref-desc {
+				color: var(--text-main);
+				font-size: 0.85rem;
+				margin: 0.25rem 0 0 0;
+				line-height: 1.45;
+			}
+		</style>
+	</head>
 	<body>
 		<Header />
 		<main>
 			<div class="intro-block">
-				<h1 style="font-family: var(--font-mono); margin: 0; font-size: 1.6rem;">~/links</h1>
+				<h1 style="font-family: var(--font-mono); margin: 0; font-size: 1.6rem; color: var(--text-main);">~/links</h1>
 				<p>Online judge'lar, dökümantasyonlar ve olimpiyat hazırlık kaynaklarının merkezi indeksi.</p>
 			</div>
 
 			<div class="section-title"># ONLINE_JUDGES</div>
+			<div class="judge-grid">
+				{judges.map((j) => (
+					<a href={j.url} target="_blank" rel="noopener noreferrer" class="judge-card">
+						<div class="card-header">
+							<span class="card-title">{j.name} ↗</span>
+							<span class="badge">{j.badge}</span>
+						</div>
+						<p class="card-desc">{j.desc}</p>
+					</a>
+				))}
+			</div>
+
 			<div class="section-title"># SYLLABUS_AND_RESOURCES</div>
-			
+			<div class="ref-list">
+				{references.map((r) => (
+					<a href={r.url} target="_blank" rel="noopener noreferrer" class="ref-row">
+						<div class="type-tag">[{r.type}]</div>
+						<div class="ref-content">
+							<span class="ref-title">{r.name} ↗</span>
+							<p class="ref-desc">{r.desc}</p>
+						</div>
+					</a>
+				))}
+			</div>
+
 			<div class="section-title"># CORE_LITERATURE</div>
-			
+			<div class="ref-list">
+				{literature.map((l) => (
+					<a href={l.url} target="_blank" rel="noopener noreferrer" class="ref-row">
+						<div class="type-tag" style="color: var(--accent);">[Literature]</div>
+						<div class="ref-content">
+							<span class="ref-title">{l.name} <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: normal;">— {l.source}</span> ↗</span>
+							<p class="ref-desc">{l.desc}</p>
+						</div>
+					</a>
+				))}
+			</div>
+
 			<div class="section-title"># MACHINE_LEARNING_THEORY</div>
+			<div class="ref-list">
+				{aiOlympiad.map((ai) => (
+					<a href={ai.url} target="_blank" rel="noopener noreferrer" class="ref-row">
+						<div class="type-tag" style="color: #d19a66;">/* {ai.tag} */</div>
+						<div class="ref-content">
+							<span class="ref-title">{ai.name} ↗</span>
+							<p class="ref-desc">{ai.desc}</p>
+						</div>
+					</a>
+				))}
+			</div>
 		</main>
 		<Footer />
 	</body>
