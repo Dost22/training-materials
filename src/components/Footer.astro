@@ -1,37 +1,110 @@
 ---
 const today = new Date();
+
+const footerLinks = [
+	{ href: '/blog', label: 'Materyaller' },
+	{ href: '/links', label: 'Bağlantılar' },
+	{ href: '/problems', label: 'Problems' },
+	{ href: '/contact', label: 'İletişim' },
+];
 ---
 
-<footer>
-	<div class="footer-container">
-		<span class="sys-status">[STATUS: ACTIVE]</span>
-		<p>Dost Seferoğlu // {today.getFullYear()}</p>
+<footer class="site-footer">
+	<div class="footer-inner">
+		<div class="footer-left">
+			<span class="sys-status">
+				<span class="status-dot" aria-hidden="true"></span>
+				STATUS: ACTIVE
+			</span>
+			<p class="footer-copy">Dost Seferoğlu // {today.getFullYear()}</p>
+		</div>
+		<nav class="footer-nav" aria-label="Alt navigasyon">
+			{footerLinks.map((link) => (
+				<a href={link.href}>{link.label}</a>
+			))}
+		</nav>
 	</div>
 </footer>
 
 <style>
-	footer {
+	.site-footer {
 		border-top: 1px solid var(--border-color);
 		padding: 2rem 0;
 		background: var(--panel-color);
-		color: var(--text-muted);
-		font-family: var(--font-mono);
-		font-size: 0.8rem;
-		margin-top: 5rem;
+		margin-top: auto;
 	}
-	.footer-container {
-		max-width: 800px;
+
+	.footer-inner {
+		width: min(var(--content-wide), calc(100% - 2rem));
 		margin: 0 auto;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		padding: 0 1.5rem;
+		flex-wrap: wrap;
+		gap: 1.25rem;
 	}
-	footer p {
-		margin: 0;
+
+	.footer-left {
+		display: flex;
+		flex-direction: column;
+		gap: 0.35rem;
 	}
+
 	.sys-status {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.45rem;
 		color: var(--accent-green);
-		font-weight: bold;
+		font-family: var(--font-mono);
+		font-size: 0.72rem;
+		font-weight: 700;
+		letter-spacing: 0.04em;
+	}
+
+	.status-dot {
+		width: 7px;
+		height: 7px;
+		border-radius: 50%;
+		background: var(--accent-green);
+		box-shadow: 0 0 8px var(--accent-green);
+		animation: pulse 2s ease-in-out infinite;
+	}
+
+	@keyframes pulse {
+		0%, 100% { opacity: 1; }
+		50% { opacity: 0.45; }
+	}
+
+	.footer-copy {
+		margin: 0;
+		color: var(--text-muted);
+		font-family: var(--font-mono);
+		font-size: 0.78rem;
+	}
+
+	.footer-nav {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem 1.25rem;
+	}
+
+	.footer-nav a {
+		font-family: var(--font-mono);
+		font-size: 0.75rem;
+		color: var(--text-muted);
+		text-decoration: none;
+		transition: color var(--transition);
+	}
+
+	.footer-nav a:hover {
+		color: var(--accent);
+		text-decoration: none;
+	}
+
+	@media (max-width: 540px) {
+		.footer-inner {
+			flex-direction: column;
+			align-items: flex-start;
+		}
 	}
 </style>

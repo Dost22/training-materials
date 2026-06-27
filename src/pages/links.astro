@@ -2,6 +2,7 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import BaseHead from '../components/BaseHead.astro';
+import PageHero from '../components/PageHero.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
 const judges = [
@@ -54,225 +55,79 @@ const youtubeChannels = [
 <html lang="tr">
 	<head>
 		<BaseHead title={`Bağlantılar | ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
-		<style>
-			main {
-				max-width: 960px;
-				margin: 0 auto;
-				padding: 3rem 1.5rem;
-				box-sizing: border-box;
-			}
-			.intro-block {
-				margin-bottom: 2.5rem;
-				border-left: 3px solid var(--accent-green);
-				padding-left: 1.2rem;
-			}
-			.intro-block p {
-				color: var(--text-muted);
-				font-size: 0.95rem;
-				margin: 0.4rem 0 0 0;
-			}
-			.section-title {
-				font-family: var(--font-mono);
-				color: var(--accent-green);
-				font-size: 0.95rem;
-				font-weight: 600;
-				margin: 3rem 0 1.2rem 0;
-				letter-spacing: 0.5px;
-				border-bottom: 1px dashed var(--border-color);
-				padding-bottom: 0.4rem;
-			}
-			
-			/* GRID PANELS */
-			.judge-grid {
-				display: grid;
-				grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-				gap: 0.85rem;
-				list-style-type: none;
-				padding: 0;
-				margin: 0;
-			}
-			
-			@media (max-width: 720px) {
-				.judge-grid {
-					grid-template-columns: 1fr;
-					gap: 0.5rem;
-				}
-				main {
-					padding: 1.5rem 1rem;
-				}
-			}
-
-			.judge-card {
-				background: var(--panel-color);
-				border: 1px solid var(--border-color);
-				border-radius: 6px;
-				padding: 1rem;
-				text-decoration: none;
-				display: flex;
-				flex-direction: column;
-				transition: border-color 0.12s ease, box-shadow 0.12s ease;
-			}
-			.judge-card:hover {
-				border-color: var(--accent);
-				text-decoration: none;
-				box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-			}
-			.card-header {
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-				margin-bottom: 0.5rem;
-			}
-			.card-title {
-				color: var(--accent);
-				font-weight: 600;
-				font-size: 0.95rem;
-			}
-			.badge {
-				font-family: var(--font-mono);
-				font-size: 0.75rem;
-				background: rgba(88, 166, 255, 0.1);
-				color: var(--accent);
-				padding: 0.15rem 0.45rem;
-				border-radius: 4px;
-				border: 1px solid rgba(88, 166, 255, 0.2);
-			}
-			.card-desc {
-				color: var(--text-main);
-				font-size: 0.85rem;
-				margin: 0;
-				line-height: 1.45;
-			}
-			
-			/* LIST MATRIX ROW PANELS */
-			.ref-list {
-				display: flex;
-				flex-direction: column;
-				gap: 0.6rem;
-				list-style-type: none;
-				padding: 0;
-				margin: 0;
-			}
-			.ref-row {
-				display: flex;
-				align-items: flex-start;
-				background: var(--panel-color);
-				border: 1px solid var(--border-color);
-				border-radius: 6px;
-				padding: 1rem 1.2rem;
-				text-decoration: none;
-				transition: border-color 0.12s ease, transform 0.12s ease;
-			}
-			.ref-row:hover {
-				border-color: var(--accent-green);
-				transform: translateX(3px);
-				text-decoration: none;
-			}
-			
-			@media (max-width: 600px) {
-				.ref-row {
-					flex-direction: column;
-					gap: 0.4rem;
-				}
-				.type-tag {
-					min-width: auto !important;
-				}
-			}
-
-			.type-tag {
-				font-family: var(--font-mono);
-				font-size: 0.75rem;
-				color: var(--text-muted);
-				min-width: 140px;
-				padding-top: 0.1rem;
-				flex-shrink: 0;
-			}
-			.ref-content {
-				display: flex;
-				flex-direction: column;
-				flex-grow: 1;
-			}
-			.ref-title {
-				color: var(--accent);
-				font-weight: 600;
-				font-size: 0.95rem;
-			}
-			.ref-desc {
-				color: var(--text-main);
-				font-size: 0.85rem;
-				margin: 0.25rem 0 0 0;
-				line-height: 1.45;
-			}
-		</style>
 	</head>
 	<body>
 		<Header />
-		<main>
-			<div class="intro-block">
-				<h1 style="font-family: var(--font-mono); margin: 0; font-size: 1.6rem; color: var(--text-main);">~/links</h1>
-				<p>Online judge'lar, dökümantasyonlar ve olimpiyat hazırlık kaynaklarının merkezi indeksi.</p>
-			</div>
+		<main class="page-shell page-shell--wide">
+			<PageHero
+				path="/links"
+				description="Online judge'lar, dökümantasyonlar ve olimpiyat hazırlık kaynaklarının merkezi indeksi."
+			/>
 
-			<div class="section-title"># ONLINE_JUDGES</div>
-			<div class="judge-grid">
+			<h2 class="section-label"># online_judges</h2>
+			<div class="card-grid">
 				{judges.map((j) => (
-					<a href={j.url} target="_blank" rel="noopener noreferrer" class="judge-card">
-						<div class="card-header">
-							<span class="card-title">{j.name} ↗</span>
+					<a href={j.url} target="_blank" rel="noopener noreferrer" class="resource-card">
+						<div class="resource-card__header">
+							<span class="resource-card__title">{j.name} ↗</span>
 							<span class="badge">{j.badge}</span>
 						</div>
-						<p class="card-desc">{j.desc}</p>
+						<p class="resource-card__desc">{j.desc}</p>
 					</a>
 				))}
 			</div>
 
-			<div class="section-title"># SYLLABUS_AND_RESOURCES</div>
+			<h2 class="section-label"># syllabus_and_resources</h2>
 			<div class="ref-list">
 				{references.map((r) => (
 					<a href={r.url} target="_blank" rel="noopener noreferrer" class="ref-row">
-						<div class="type-tag">[{r.type}]</div>
-						<div class="ref-content">
-							<span class="ref-title">{r.name} ↗</span>
-							<p class="ref-desc">{r.desc}</p>
+						<span class="ref-row__tag">[{r.type}]</span>
+						<div>
+							<span class="ref-row__title">{r.name} ↗</span>
+							<p class="ref-row__desc">{r.desc}</p>
 						</div>
 					</a>
 				))}
 			</div>
 
-			<div class="section-title"># CORE_LITERATURE</div>
+			<h2 class="section-label"># core_literature</h2>
 			<div class="ref-list">
 				{literature.map((l) => (
 					<a href={l.url} target="_blank" rel="noopener noreferrer" class="ref-row">
-						<div class="type-tag" style="color: var(--accent);">[Literature]</div>
-						<div class="ref-content">
-							<span class="ref-title">{l.name} <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: normal;">— {l.source}</span> ↗</span>
-							<p class="ref-desc">{l.desc}</p>
+						<span class="ref-row__tag" style="color: var(--accent);">[Literature]</span>
+						<div>
+							<span class="ref-row__title">
+								{l.name}
+								<span style="font-size: 0.8rem; color: var(--text-muted); font-weight: normal;"> — {l.source}</span>
+								↗
+							</span>
+							<p class="ref-row__desc">{l.desc}</p>
 						</div>
 					</a>
 				))}
 			</div>
 
-			<div class="section-title"># MACHINE_LEARNING_THEORY</div>
+			<h2 class="section-label"># machine_learning_theory</h2>
 			<div class="ref-list">
 				{aiOlympiad.map((ai) => (
 					<a href={ai.url} target="_blank" rel="noopener noreferrer" class="ref-row">
-						<div class="type-tag" style="color: #d19a66;">/* {ai.tag} */</div>
-						<div class="ref-content">
-							<span class="ref-title">{ai.name} ↗</span>
-							<p class="ref-desc">{ai.desc}</p>
+						<span class="ref-row__tag badge--purple" style="background: none; border: none; padding: 0;">/* {ai.tag} */</span>
+						<div>
+							<span class="ref-row__title">{ai.name} ↗</span>
+							<p class="ref-row__desc">{ai.desc}</p>
 						</div>
 					</a>
 				))}
 			</div>
 
-			<div class="section-title"># RECOMMENDED_YOUTUBE_CHANNELS</div>
+			<h2 class="section-label"># recommended_youtube</h2>
 			<div class="ref-list">
 				{youtubeChannels.map((yt) => (
 					<a href={yt.url} target="_blank" rel="noopener noreferrer" class="ref-row">
-						<div class="type-tag" style="color: #ff5555;">[YT // {yt.tag}]</div>
-						<div class="ref-content">
-							<span class="ref-title">{yt.name} ↗</span>
-							<p class="ref-desc">{yt.desc}</p>
+						<span class="ref-row__tag" style="color: #ff7b72;">[YT // {yt.tag}]</span>
+						<div>
+							<span class="ref-row__title">{yt.name} ↗</span>
+							<p class="ref-row__desc">{yt.desc}</p>
 						</div>
 					</a>
 				))}

@@ -2,6 +2,7 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import BaseHead from '../components/BaseHead.astro';
+import PageHero from '../components/PageHero.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
 const problemPool = [
@@ -147,99 +148,27 @@ const problemPool = [
 <html lang="tr">
 	<head>
 		<BaseHead title={`Hall of Fame | ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
-		<style>
-			main {
-				max-width: 800px;
-				margin: 0 auto;
-				padding: 3rem 1.5rem;
-			}
-			.intro-block {
-				margin-bottom: 3rem;
-				border-left: 3px solid var(--accent-green);
-				padding-left: 1.2rem;
-			}
-			.intro-block p {
-				color: var(--text-muted);
-				font-size: 0.95rem;
-				margin: 0.4rem 0 0 0;
-			}
-			.category-block {
-				margin-bottom: 3rem;
-			}
-			.category-title {
-				font-family: var(--font-mono);
-				color: var(--accent-green);
-				font-size: 0.95rem;
-				font-weight: 600;
-				margin: 0 0 1.2rem 0;
-				letter-spacing: 0.5px;
-				border-bottom: 1px dashed var(--border-color);
-				padding-bottom: 0.4rem;
-			}
-			.grid-matrix {
-				display: grid;
-				grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-				gap: 0.75rem;
-			}
-			.prob-card {
-				display: flex;
-				align-items: center;
-				background: var(--panel-color);
-				border: 1px solid var(--border-color);
-				border-radius: 6px;
-				padding: 0.85rem 1.2rem;
-				text-decoration: none;
-				transition: border-color 0.12s ease;
-			}
-			.prob-card:hover {
-				border-color: var(--accent);
-				text-decoration: none;
-			}
-			.bracket-tag {
-				font-family: var(--font-mono);
-				font-size: 0.75rem;
-				color: var(--accent);
-				margin-right: 1rem;
-				background: rgba(88, 166, 255, 0.1);
-				padding: 0.2rem 0.5rem;
-				border-radius: 4px;
-				border: 1px solid rgba(88, 166, 255, 0.2);
-				flex-shrink: 0;
-				user-select: none;
-			}
-			.prob-title {
-				color: var(--text-main);
-				font-size: 0.9rem;
-				font-weight: 500;
-				overflow: hidden;
-				text-overflow: ellipsis;
-				white-space: nowrap;
-			}
-			.prob-card:hover .prob-title {
-				color: var(--accent);
-			}
-		</style>
 	</head>
 	<body>
 		<Header />
-		<main>
-			<div class="intro-block">
-				<h1 style="font-family: var(--font-mono); margin: 0; font-size: 1.6rem; color: var(--text-main);">~/curated-problems</h1>
-				<p>Aklıma gelen sevdiğim soruların listesi.</p>
-			</div>
+		<main class="page-shell page-shell--wide">
+			<PageHero
+				path="/curated-problems"
+				description="Aklıma gelen sevdiğim soruların listesi — IOI, APIO, JOI ve daha fazlası."
+			/>
 
 			{problemPool.map((group) => (
-				<div class="category-block">
-					<h2 class="category-title"># {group.category.toUpperCase()}</h2>
-					<div class="grid-matrix">
+				<section>
+					<h2 class="section-label"># {group.category}</h2>
+					<div class="prob-grid">
 						{group.problems.map((prob) => (
 							<a href={prob.url} target="_blank" rel="noopener noreferrer" class="prob-card">
-								<span class="bracket-tag">RUN</span>
-								<span class="prob-title">{prob.name} ↗</span>
+								<span class="prob-card__run">RUN</span>
+								<span class="prob-card__title">{prob.name} ↗</span>
 							</a>
 						))}
 					</div>
-				</div>
+				</section>
 			))}
 		</main>
 		<Footer />

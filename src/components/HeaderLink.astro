@@ -9,16 +9,41 @@ const subpath = pathname.match(/[^\/]+/g);
 const isActive = href === pathname || href === '/' + (subpath?.[0] || '');
 ---
 
-<a href={href} class:list={[className, { active: isActive }]} {...props}>
+<a href={href} class:list={['nav-link', className, { 'nav-link--active': isActive }]} {...props}>
 	<slot />
 </a>
+
 <style>
-	a {
+	.nav-link {
 		display: inline-block;
+		padding: 0.35rem 0.65rem;
+		color: var(--text-muted);
+		font-family: var(--font-mono);
+		font-size: 0.78rem;
+		text-decoration: none;
+		border-radius: var(--radius-sm);
+		transition:
+			color var(--transition),
+			background var(--transition);
+		white-space: nowrap;
+	}
+
+	.nav-link:hover {
+		color: var(--text-bright);
+		background: rgba(255, 255, 255, 0.04);
 		text-decoration: none;
 	}
-	a.active {
-		font-weight: bolder;
-		text-decoration: underline;
+
+	.nav-link--active {
+		color: var(--accent-green);
+		background: var(--accent-green-dim);
+		font-weight: 600;
+	}
+
+	@media (max-width: 768px) {
+		.nav-link {
+			padding: 0.65rem 0.75rem;
+			font-size: 0.82rem;
+		}
 	}
 </style>

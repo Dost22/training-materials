@@ -1,68 +1,157 @@
 ---
 import HeaderLink from './HeaderLink.astro';
 import { SITE_TITLE } from '../consts';
+
+const navItems = [
+	{ href: '/', label: '~/ana-sayfa' },
+	{ href: '/blog', label: '~/materyaller' },
+	{ href: '/links', label: '~/bağlantılar' },
+	{ href: '/problems', label: '~/problems' },
+	{ href: '/contact', label: '~/iletisim' },
+];
 ---
 
-<header>
-	<nav class="nav-container">
-		<div class="brand">
-			<a href="/" class="brand-link">{SITE_TITLE.toLowerCase()}</a>
+<header class="site-header">
+	<nav class="nav-container" aria-label="Ana navigasyon">
+		<a href="/" class="brand-link">{SITE_TITLE.toLowerCase()}</a>
+
+		<button
+			type="button"
+			class="menu-toggle"
+			aria-expanded="false"
+			aria-controls="site-nav"
+			aria-label="Menüyü aç/kapat"
+		>
+			<span class="menu-toggle__bar"></span>
+			<span class="menu-toggle__bar"></span>
+			<span class="menu-toggle__bar"></span>
+		</button>
+
+		<div class="nav-links" id="site-nav">
+			{navItems.map((item) => (
+				<HeaderLink href={item.href}>{item.label}</HeaderLink>
+			))}
 		</div>
-		<div class="internal-links">
-			<HeaderLink href="/">~/ana-sayfa</HeaderLink>
-			<HeaderLink href="/blog">~/materyaller</HeaderLink>
-			<HeaderLink href="/links">~/bağlantılar</HeaderLink>
-			<HeaderLink href="/problems">~/problems</HeaderLink>
-			<HeaderLink href="/contact">~/iletisim</HeaderLink> </div>
 	</nav>
 </header>
 
 <style>
-	header {
+	.site-header {
+		position: sticky;
+		top: 0;
+		z-index: 100;
 		border-bottom: 1px solid var(--border-color);
-		background-color: var(--panel-color);
-		padding: 1.2rem 0;
+		background: rgba(13, 17, 23, 0.82);
+		backdrop-filter: blur(12px);
+		-webkit-backdrop-filter: blur(12px);
 	}
+
 	.nav-container {
-		max-width: 800px;
+		position: relative;
+		width: min(var(--content-wide), calc(100% - 2rem));
 		margin: 0 auto;
 		display: flex;
-		justify-content: space-between;
 		align-items: center;
-		padding: 0 1.5rem;
+		justify-content: space-between;
+		min-height: var(--header-height);
+		gap: 1rem;
 	}
+
 	.brand-link {
 		color: var(--accent-green) !important;
 		font-weight: 700;
 		font-family: var(--font-mono);
-		font-size: 1rem;
+		font-size: 0.95rem;
 		text-decoration: none;
-		letter-spacing: -0.5px;
+		letter-spacing: -0.03em;
+		flex-shrink: 0;
 	}
-	.internal-links {
+
+	.brand-link:hover {
+		color: var(--accent) !important;
+	}
+
+	.nav-links {
 		display: flex;
-		gap: 1.5rem;
+		align-items: center;
+		gap: 0.35rem;
 	}
-	.internal-links a {
-		color: var(--text-muted);
-		font-family: var(--font-mono);
-		font-size: 0.85rem;
-		text-decoration: none;
-		transition: color 0.1s ease;
+
+	.menu-toggle {
+		display: none;
+		flex-direction: column;
+		justify-content: center;
+		gap: 5px;
+		width: 2.25rem;
+		height: 2.25rem;
+		padding: 0.35rem;
+		background: transparent;
+		border: 1px solid var(--border-color);
+		border-radius: var(--radius-sm);
+		cursor: pointer;
 	}
-	.internal-links a:hover,
-	.internal-links a.active {
-		color: var(--accent-green);
+
+	.menu-toggle__bar {
+		display: block;
+		width: 100%;
+		height: 2px;
+		background: var(--text-muted);
+		border-radius: 1px;
+		transition: transform var(--transition), opacity var(--transition);
 	}
-	@media (max-width: 600px) {
-		header {
-			padding: 1rem 0;
-		}
-		.internal-links {
+
+	.menu-toggle[aria-expanded='true'] .menu-toggle__bar:nth-child(1) {
+		transform: translateY(7px) rotate(45deg);
+	}
+
+	.menu-toggle[aria-expanded='true'] .menu-toggle__bar:nth-child(2) {
+		opacity: 0;
+	}
+
+	.menu-toggle[aria-expanded='true'] .menu-toggle__bar:nth-child(3) {
+		transform: translateY(-7px) rotate(-45deg);
+	}
+
+	@media (max-width: 768px) {
+		.menu-toggle {
 			display: flex;
-			flex-wrap: wrap; /* Taşarsa alta atsın */
-			justify-content: center;
-			gap: 0.5rem;
+		}
+
+		.nav-links {
+			position: absolute;
+			top: 100%;
+			left: 0;
+			right: 0;
+			flex-direction: column;
+			align-items: stretch;
+			gap: 0;
+			padding: 0.5rem 1rem 1rem;
+			background: rgba(13, 17, 23, 0.97);
+			border-bottom: 1px solid var(--border-color);
+			backdrop-filter: blur(12px);
+			display: none;
+		}
+
+		.nav-links.is-open {
+			display: flex;
 		}
 	}
 </style>
+
+<script>
+	const toggle = document.querySelector('.menu-toggle');
+	const nav = document.getElementById('site-nav');
+
+	toggle?.addEventListener('click', () => {
+		const expanded = toggle.getAttribute('aria-expanded') === 'true';
+		toggle.setAttribute('aria-expanded', String(!expanded));
+		nav?.classList.toggle('is-open');
+	});
+
+	nav?.querySelectorAll('a').forEach((link) => {
+		link.addEventListener('click', () => {
+			toggle?.setAttribute('aria-expanded', 'false');
+			nav?.classList.remove('is-open');
+		});
+	});
+</script>
