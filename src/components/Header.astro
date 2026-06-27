@@ -54,4 +54,15 @@ import { SITE_TITLE } from '../consts';
 	.internal-links a.active {
 		color: var(--accent-green);
 	}
+	@media (max-width: 600px) {
+		header {
+			padding: 1rem 0;
+		}
+		.internal-links {
+			display: flex;
+			flex-wrap: wrap; /* Taşarsa alta atsın */
+			justify-content: center;
+			gap: 0.5rem;
+		}
+	}
 </style>

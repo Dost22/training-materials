@@ -110,3 +110,29 @@ li {
   font-size: 0.85rem;
   margin-right: 1rem;
 }
+/* Mobildeki taşmaları engellemek için */
+body {
+    overflow-x: hidden;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* Tüm container'ların mobilde yanlardan nefes almasını sağla */
+.footer-container, 
+header, 
+main {
+    max-width: 800px;
+    width: 90% !important; /* Ekranın %90'ını kaplasın */
+    margin: 0 auto !important;
+}
+
+/* Header linklerini mobilde alt alta dizmek için */
+@media (max-width: 600px) {
+    .internal-links {
+        display: flex;
+        flex-direction: column; /* Linkleri alt alta al */
+        gap: 1rem;
+        align-items: flex-start;
+    }
+}
