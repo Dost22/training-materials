@@ -49,17 +49,15 @@ import { SITE_TITLE } from '../consts';
 			<div class="contact-form">
 				<h1 style="font-size: 1.4rem; margin: 0 0 1.5rem; color: var(--text-main);">$ ./iletisim.sh</h1>
 				
-				<form action="https://formspree.io/f/xpqgrajg" method="POST">
-                <label>Adınız:</label>
+            <form action="https://formspree.io/f/xpqgrajg" method="POST">
+                <label>Adınız / Kimlik:</label>
                 <input type="text" name="identity" required placeholder="Anonim..." />
 
+                <label>Mesaj / Öneri:</label>
+                <textarea name="message" rows="5" required placeholder="Buraya yaz..."></textarea>
+                
                 <button type="submit">> RUN_SEND</button>
-					
-					<label>Mesaj / Öneri:</label>
-					<textarea name="message" rows="5" required placeholder="Buraya yaz..."></textarea>
-					
-					<button type="submit">> GÖNDER</button>
-				</form>
+            </form>
 			</div>
 		</main>
 		<Footer />
