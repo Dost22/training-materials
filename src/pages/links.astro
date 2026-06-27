@@ -41,6 +41,12 @@ const aiOlympiad = [
   { name: "NLTK Natural Language Book", url: "https://www.nltk.org/book/ch00.html", tag: "Textbook", desc: "The definitive guide to linguistic data parsing, text vectorization, and tokenization paradigms." },
   { name: "TensorFlow Playground", url: "https://playground.tensorflow.org/", tag: "Visualizer", desc: "Interactive neural network playground for visualizing backpropagation, activation thresholds, and feature maps." }
 ];
+
+// Curated list of pristine algorithmic problems
+const favoriteProblems = [
+  { name: "AtCoder - ABC 300 G - P-Factorous Quantities", url: "https://atcoder.jp/contests/abc300/tasks/abc300_g", platform: "AtCoder", desc: "An elegant meet-in-the-middle scaling problem using prime factors. Perfect exercise for tracking optimization limits under strict constraint boundaries." },
+  { name: "CSES - Tree Isomorphism I", url: "https://cses.fi/problemset/task/1700", platform: "CSES", desc: "Pure canonical tree hashing. Structural representation logic at its absolute finest." }
+];
 ---
 
 <!doctype html>
@@ -189,7 +195,7 @@ const aiOlympiad = [
 							<span class="card-title">{j.name} ↗</span>
 							<span class="badge">{j.badge}</span>
 						</div>
-						<p class="card-desc">{j.desc}</p>
+						<p class="card-desc">{j.dev || j.desc}</p>
 					</a>
 				))}
 			</div>
@@ -231,6 +237,20 @@ const aiOlympiad = [
 						<div class="ref-content">
 							<span class="ref-title">{ai.name} ↗</span>
 							<p class="ref-desc">{ai.desc}</p>
+						</div>
+					</a>
+				))}
+			</div>
+
+			<!-- Recommended Problems Hall of Fame -->
+			<div class="section-title"># CURATED_ALGORITHMIC_PROBLEMS_HALL_OF_FAME</div>
+			<div class="ref-list">
+				{favoriteProblems.map((prob) => (
+					<a href={prob.url} target="_blank" rel="noopener noreferrer" class="ref-row">
+						<div class="type-tag" style="color: var(--accent-green);">// {prob.platform}</div>
+						<div class="ref-content">
+							<span class="ref-title" style="color: #f0f6fc;">{prob.name} ↗</span>
+							<p class="ref-desc" style="color: var(--text-muted); font-style: italic;">"{prob.desc}"</p>
 						</div>
 					</a>
 				))}
