@@ -6,7 +6,7 @@ import { SITE_TITLE } from '../consts';
 <header>
 	<nav class="nav-container">
 		<div class="brand">
-			<a href="/" style="color: var(--accent-green); font-weight: bold; font-family: var(--font-mono);">{SITE_TITLE}</a>
+			<a href="/" class="brand-link">{SITE_TITLE.toLowerCase()}</a>
 		</div>
 		<div class="internal-links">
 			<HeaderLink href="/">~/ana-sayfa</HeaderLink>
@@ -21,7 +21,7 @@ import { SITE_TITLE } from '../consts';
 	header {
 		border-bottom: 1px solid var(--border-color);
 		background-color: var(--panel-color);
-		padding: 1rem 0;
+		padding: 1.2rem 0;
 	}
 	.nav-container {
 		max-width: 800px;
@@ -29,20 +29,29 @@ import { SITE_TITLE } from '../consts';
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		padding: 0 1rem;
+		padding: 0 1.5rem;
 	}
-	header a {
-		color: var(--text-muted);
+	.brand-link {
+		color: var(--accent-green) !important;
+		font-weight: 700;
 		font-family: var(--font-mono);
-		font-size: 0.9rem;
-		margin-right: 1rem;
+		font-size: 1rem;
 		text-decoration: none;
-	}
-	header a.active, header a:hover {
-		color: var(--accent-green);
+		letter-spacing: -0.5px;
 	}
 	.internal-links {
 		display: flex;
-		gap: 0.5rem;
+		gap: 1.5rem; /* Bağlantıların arasını net bir şekilde açıyoruz */
+	}
+	.internal-links a {
+		color: var(--text-muted);
+		font-family: var(--font-mono);
+		font-size: 0.85rem;
+		text-decoration: none;
+		transition: color 0.1s ease;
+	}
+	.internal-links a:hover,
+	.internal-links a.active {
+		color: var(--accent-green);
 	}
 </style>

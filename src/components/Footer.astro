@@ -3,18 +3,35 @@ const today = new Date();
 ---
 
 <footer>
-	&copy; {today.getFullYear()} Seferovic. All rights reserved.
+	<div class="footer-container">
+		<span class="sys-status">[DURUM: AKTİF]</span>
+		<p>&copy; {today.getFullYear()} seferovic. Tüm hakları saklıdır.</p>
+	</div>
 </footer>
 
 <style>
 	footer {
-		padding: 2rem 1rem;
-		background: var(--bg-color);
+		border-top: 1px solid var(--border-color);
+		padding: 2rem 0;
+		background: var(--panel-color);
 		color: var(--text-muted);
-		text-align: center;
 		font-family: var(--font-mono);
 		font-size: 0.8rem;
-		border-top: 1px solid var(--border-color);
-		margin-top: 4rem;
+		margin-top: 5rem;
+	}
+	.footer-container {
+		max-width: 800px;
+		margin: 0 auto;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 0 1.5rem;
+	}
+	footer p {
+		margin: 0;
+	}
+	.sys-status {
+		color: var(--accent-green);
+		font-weight: bold;
 	}
 </style>
