@@ -22,12 +22,31 @@ const references = [
   { name: "Mamnoon Siam Notes", url: "https://mamnoonsiam.github.io/", type: "Advanced", desc: "Elite curation of high-level optimization tricks, centroid structures, and obscure data systems." },
   { name: "USAMO Guide", url: "https://www.usamoguide.com/", type: "Math", desc: "Mathematical problem-solving foundation to reinforce theoretical analytical frameworks." }
 ];
+
+const literature = [
+  { name: "Competitive Programmer's Handbook", url: "https://cses.fi/book/book.pdf", source: "Antti Laaksonen", desc: "The foundational text for modern competitive algorithms. Clean layouts covering everything from range updates to string hashing." },
+  { name: "Modern Olympiad Number Theory (MONT)", url: "https://www.cantab.net/users/aditya/books/ModernOlympiadNumberTheory.pdf", source: "Aditya Khurmi", desc: "Elite mathematical foundation tracking advanced modular arithmetic, p-adic valuations, and diophantine structures." }
+];
+
+const aiOlympiad = [
+  { name: "Google Colab", url: "https://colab.research.google.com/", tag: "IDE", desc: "Cloud-hosted Jupyter environment utilized for interactive prototyping and model training pipelines." },
+  { name: "Olimpiada AI Romania", url: "https://platform.olimpiada-ai.ro/en", tag: "Judge", desc: "Official examination and testing environment hosting structured tasks and automated subtask evaluations." },
+  { name: "Mathematics for Machine Learning (MML)", url: "https://mml-book.github.io/", tag: "Theory Hub", desc: "Comprehensive portal tracking the vector spaces, matrix factorizations, and multi-variable calculus underlying machine learning." },
+  { name: "MML Textbook (Full PDF)", url: "https://mml-book.github.io/book/mml-book.pdf", tag: "Textbook", desc: "Direct compilation of the foundational MML syllabus for offline mathematical analysis." },
+  { name: "DeepLearning.AI", url: "https://learn.deeplearning.ai/", tag: "Syllabus", desc: "Short-course modules breaking down structural model implementations and fine-tuning mechanics." },
+  { name: "NumPy Quickstart Guide", url: "https://numpy.org/doc/stable/user/quickstart.html", tag: "Docs", desc: "Reference handbook outlining vectorization, broad array structures, and efficient coordinate transformations." },
+  { name: "Nitro-AI Preparation Hub", url: "https://olimpiada.nitro-ai.org/ro/prepare", tag: "Training", desc: "Targeted competitive training modules, past olympiad datasets, and environment setups." },
+  { name: "Pandas Cookbook", url: "https://pandas.pydata.org/pandas-docs/stable/user_guide/cookbook.html#cookbook", tag: "Docs", desc: "Granular idioms and optimization paths for dataframe cleaning, structural slicing, and feature matrix assembly." },
+  { name: "AI Club (Avalur)", url: "https://avalur.github.io/ai_club.html", tag: "Curated Notes", desc: "Dense, elite compilation of learning paths, algorithmic theory, and competition tricks for specialized AI pools." },
+  { name: "NLTK Natural Language Book", url: "https://www.nltk.org/book/ch00.html", tag: "Textbook", desc: "The definitive guide to linguistic data parsing, text vectorization, and tokenization paradigms." },
+  { name: "TensorFlow Playground", url: "https://playground.tensorflow.org/", tag: "Visualizer", desc: "Interactive neural network playground for visualizing backpropagation, activation thresholds, and feature maps." }
+];
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title={`Olympiad Index | ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
+		<BaseHead title={`Engineering Index | ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
 		<style>
 			main {
 				max-width: 800px;
@@ -83,7 +102,6 @@ const references = [
 				color: var(--accent);
 				font-weight: 600;
 				font-size: 0.95rem;
-				font-family: var(--font-sans);
 			}
 			.judge-card:hover .card-title {
 				color: #f0f6fc;
@@ -130,7 +148,7 @@ const references = [
 				font-family: var(--font-mono);
 				font-size: 0.75rem;
 				color: var(--text-muted);
-				min-width: 90px;
+				min-width: 100px;
 				padding-top: 0.15rem;
 			}
 			.ref-content {
@@ -158,12 +176,12 @@ const references = [
 		<Header />
 		<main>
 			<div class="intro-block">
-				<h1 style="font-family: var(--font-mono); margin: 0; font-size: 1.6rem;">~/ioi-training-index</h1>
-				<p>A centralized indexing of core judges, theory frameworks, and problem-tracking matrices for competitive programming.</p>
+				<h1 style="font-family: var(--font-mono); margin: 0; font-size: 1.6rem;">~/olympiad-dashboard</h1>
+				<p>A centralized indexing of core judges, artificial intelligence theory environments, and curriculum trackers.</p>
 			</div>
 
 			<!-- Core Evaluation Hubs -->
-			<div class="section-title"># ACTIVE_EVALUATION_ENVIRONMENTS</div>
+			<div class="section-title"># IOI_ACTIVE_EVALUATION_ENVIRONMENTS</div>
 			<div class="judge-grid">
 				{judges.map((j) => (
 					<a href={j.url} target="_blank" rel="noopener noreferrer" class="judge-card">
@@ -177,7 +195,7 @@ const references = [
 			</div>
 
 			<!-- Curated Syllabus and Guides -->
-			<div class="section-title"># CORE_THEORY_AND_CURRICULUM_MATRICES</div>
+			<div class="section-title"># IOI_CORE_THEORY_AND_CURRICULUM_MATRICES</div>
 			<div class="ref-list">
 				{references.map((r) => (
 					<a href={r.url} target="_blank" rel="noopener noreferrer" class="ref-row">
@@ -185,6 +203,34 @@ const references = [
 						<div class="ref-content">
 							<span class="ref-title">{r.name} ↗</span>
 							<p class="ref-desc">{r.desc}</p>
+						</div>
+					</a>
+				))}
+			</div>
+
+			<!-- Core Mathematical & Algorithmic Literature -->
+			<div class="section-title"># REQUISITE_CORE_LITERATURE</div>
+			<div class="ref-list">
+				{literature.map((l) => (
+					<a href={l.url} target="_blank" rel="noopener noreferrer" class="ref-row">
+						<div class="type-tag" style="color: var(--accent);">[LIT]</div>
+						<div class="ref-content">
+							<span class="ref-title">{l.name} <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: normal;">— {l.source}</span> ↗</span>
+							<p class="ref-desc">{l.desc}</p>
+						</div>
+					</a>
+				))}
+			</div>
+
+			<!-- IOAI Architecture & Foundations -->
+			<div class="section-title"># IOAI_ARTIFICIAL_INTELLIGENCE_FOUNDATIONS</div>
+			<div class="ref-list">
+				{aiOlympiad.map((ai) => (
+					<a href={ai.url} target="_blank" rel="noopener noreferrer" class="ref-row">
+						<div class="type-tag" style="color: #d19a66;">/* {ai.tag} */</div>
+						<div class="ref-content">
+							<span class="ref-title">{ai.name} ↗</span>
+							<p class="ref-desc">{ai.desc}</p>
 						</div>
 					</a>
 				))}
