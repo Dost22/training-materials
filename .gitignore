@@ -26,3 +26,5 @@ pnpm-debug.log*
 .aider.tags.cache.v4/
 .aider*
 .aider.tags.cache.v4/
+.aider*
+requirements.txt
