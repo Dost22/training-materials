@@ -1,0 +1,122 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import BaseHead from '../components/BaseHead.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+
+const favoriteProblems = [
+  { 
+    name: "AtCoder - ABC 300 G - P-Factorous Quantities", 
+    url: "https://atcoder.jp/contests/abc300/tasks/abc300_g", 
+    platform: "AtCoder", 
+    desc: "An elegant meet-in-the-middle scaling problem using prime factors. Perfect exercise for tracking optimization limits under strict constraint boundaries." 
+  },
+  { 
+    name: "CSES - Tree Isomorphism I", 
+    url: "https://cses.fi/problemset/task/1700", 
+    platform: "CSES", 
+    desc: "Pure canonical tree hashing. Structural representation logic at its absolute finest." 
+  }
+];
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={`Hall of Fame | ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
+		<style>
+			main {
+				max-width: 800px;
+				margin: 0 auto;
+				padding: 2rem 1rem;
+			}
+			.intro-block {
+				margin-bottom: 2rem;
+				border-left: 3px solid var(--accent-green);
+				padding-left: 1rem;
+			}
+			.intro-block p {
+				color: var(--text-muted);
+				font-size: 0.95rem;
+				margin: 0.25rem 0 0 0;
+			}
+			.section-title {
+				font-family: var(--font-mono);
+				color: var(--accent-green);
+				font-size: 0.95rem;
+				font-weight: 600;
+				margin: 2.5rem 0 1rem 0;
+				letter-spacing: 0.5px;
+			}
+			.ref-list {
+				display: flex;
+				flex-direction: column;
+				gap: 0.5rem;
+			}
+			.ref-row {
+				display: flex;
+				align-items: flex-start;
+				background: var(--panel-color);
+				border: 1px solid var(--border-color);
+				border-radius: 6px;
+				padding: 0.75rem 1rem;
+				text-decoration: none;
+				transition: border-color 0.12s ease, transform 0.12s ease;
+			}
+			.ref-row:hover {
+				border-color: var(--accent-green);
+				transform: translateX(3px);
+				text-decoration: none;
+			}
+			.type-tag {
+				font-family: var(--font-mono);
+				font-size: 0.75rem;
+				color: var(--text-muted);
+				min-width: 100px;
+				padding-top: 0.15rem;
+			}
+			.ref-content {
+				display: flex;
+				flex-direction: column;
+				flex-grow: 1;
+			}
+			.ref-title {
+				color: #f0f6fc;
+				font-weight: 600;
+				font-size: 0.95rem;
+			}
+			.ref-row:hover .ref-title {
+				color: var(--accent-green);
+			}
+			.ref-desc {
+				color: var(--text-main);
+				font-size: 0.85rem;
+				margin: 0.15rem 0 0 0;
+				line-height: 1.4;
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<div class="intro-block">
+				<h1 style="font-family: var(--font-mono); margin: 0; font-size: 1.6rem;">~/problem-hof</h1>
+				<p>A selective directory tracking algorithmic tasks with elegant constraints, unique mathematical tricks, or pristine structural logic.</p>
+			</div>
+
+			<div class="section-title"># TARGETED_ALGORITHMIC_BENCHMARKS</div>
+			<div class="ref-list">
+				{favoriteProblems.map((prob) => (
+					<a href={prob.url} target="_blank" rel="noopener noreferrer" class="ref-row">
+						<div class="type-tag" style="color: var(--accent-green);">// {prob.platform}</div>
+						<div class="ref-content">
+							<span class="ref-title">{prob.name} ↗</span>
+							<p class="ref-desc" style="color: var(--text-muted); font-style: italic;">"{prob.desc}"</p>
+						</div>
+					</a>
+				))}
+			</div>
+		</main>
+		<Footer />
+	</body>
+</html>
