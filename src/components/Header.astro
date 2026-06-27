@@ -83,3 +83,44 @@ import { SITE_TITLE } from '../consts';
 		user-select: none;
 	}
 </style>
+<script>
+	function initLang() {
+		const savedLang = localStorage.getItem('site-lang') || 'en';
+		updateLanguage(savedLang);
+
+		document.querySelectorAll('.lang-btn').forEach(btn => {
+			btn.addEventListener('click', (e) => {
+				const target = e.target as HTMLButtonElement;
+				const lang = target.getAttribute('data-lang') || 'en';
+				localStorage.setItem('site-lang', lang);
+				updateLanguage(lang);
+			});
+		});
+	}
+
+	function updateLanguage(lang: string) {
+		// Update button active states
+		document.querySelectorAll('.lang-btn').forEach(btn => {
+			if (btn.getAttribute('data-lang') === lang) {
+				btn.classList.add('active');
+			} else {
+				btn.classList.remove('active');
+			}
+		});
+
+		// Toggle visibility of elements with lang attributes
+		document.querySelectorAll('[data-text-en]').forEach(el => {
+			const element = el as HTMLElement;
+			if (lang === 'tr') {
+				element.textContent = element.getAttribute('data-text-tr');
+			} else {
+				element.textContent = element.getAttribute('data-text-en');
+			}
+		});
+	}
+
+	// Runs on initial load
+	initLang();
+	// Runs on Astro page navigation swaps
+	document.addEventListener('astro:after-swap', initLang);
+</script>
