@@ -1,0 +1,126 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import BaseHead from '../components/BaseHead.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+
+// Curated list of high-tier programming, AI theory, and curriculum tracking platforms
+const resourceGroups = [
+  {
+    category: "Competitive Programming",
+    items: [
+      { name: "AtCoder", url: "https://atcoder.jp", desc: "Algorithmic contests and highly structured, clean problem sets." },
+      { name: "Luogu", url: "https://www.luogu.com.cn", desc: "Extensive problem repository for deep subtask and competitive optimization training." }
+    ]
+  },
+  {
+    category: "Artificial Intelligence & Theory",
+    items: [
+      { name: "IOAI Materials", url: "https://ioai-official.org", desc: "International Olympiad in Artificial Intelligence foundations, machine learning data tasks, and theoretical architectures." }
+    ]
+  },
+  {
+    category: "Academic & Medical Reference",
+    items: [
+      { name: "Medical English Curricula Tracking", url: "#", desc: "Foundational reference indexes, textbook companions, and system plates for advanced medical tracks." }
+    ]
+  }
+];
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={`Links | ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
+		<style>
+			main {
+				max-width: 650px;
+				margin: 0 auto;
+				padding: 2rem 1rem;
+			}
+			.intro-block {
+				margin-bottom: 2.5rem;
+			}
+			.intro-block p {
+				color: var(--text-muted);
+				font-size: 0.95rem;
+				margin-top: 0.5rem;
+			}
+			.category-section {
+				margin-bottom: 2rem;
+			}
+			.category-title {
+				font-family: var(--font-mono);
+				color: var(--accent-green);
+				font-size: 1rem;
+				font-weight: 600;
+				margin: 2rem 0 1rem 0;
+				border-bottom: 1px solid var(--border-color);
+				padding-bottom: 0.4rem;
+				text-transform: lowercase;
+			}
+			.link-grid {
+				display: grid;
+				grid-template-columns: 1fr;
+				gap: 0.75rem;
+			}
+			.link-card {
+				background: var(--panel-color);
+				border: 1px solid var(--border-color);
+				border-radius: 6px;
+				padding: 1rem;
+				text-decoration: none;
+				transition: border-color 0.15s ease, transform 0.15s ease;
+				display: block;
+			}
+			.link-card:hover {
+				border-color: var(--accent);
+				transform: translateX(4px);
+				text-decoration: none;
+			}
+			.link-name {
+				color: var(--accent);
+				font-weight: 600;
+				font-size: 1.05rem;
+				display: inline-flex;
+				align-items: center;
+			}
+			.link-card:hover .link-name {
+				color: #f0f6fc;
+				text-decoration: underline;
+			}
+			.link-desc {
+				color: var(--text-main);
+				font-size: 0.88rem;
+				margin: 0.35rem 0 0 0;
+				line-height: 1.4;
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<div class="intro-block">
+				<h1 style="font-family: var(--font-mono); margin: 0;">~/useful-links</h1>
+				<p>A curated engineering dashboard indexing the specialized tools, reference materials, and core theory platforms I utilize.</p>
+			</div>
+
+			{resourceGroups.map((group) => (
+				<div class="category-section">
+					<div class="category-title">// {group.category}</div>
+					<div class="link-grid">
+						{group.items.map((item) => (
+							<a href={item.url} target="_blank" rel="noopener noreferrer" class="link-card">
+								<div class="link-name">
+									{item.name} <span style="font-size: 0.85rem; margin-left: 0.4rem;">↗</span>
+								</div>
+								<p class="link-desc">{item.desc}</p>
+							</a>
+						))}
+					</div>
+				</div>
+			))}
+		</main>
+		<Footer />
+	</body>
+</html>
