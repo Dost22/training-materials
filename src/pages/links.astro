@@ -4,95 +4,152 @@ import Footer from '../components/Footer.astro';
 import BaseHead from '../components/BaseHead.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
-// Curated list of high-tier programming, AI theory, and curriculum tracking platforms
-const resourceGroups = [
-  {
-    category: "Competitive Programming",
-    items: [
-      { name: "AtCoder", url: "https://atcoder.jp", desc: "Algorithmic contests and highly structured, clean problem sets." },
-      { name: "Luogu", url: "https://www.luogu.com.cn", desc: "Extensive problem repository for deep subtask and competitive optimization training." }
-    ]
-  },
-  {
-    category: "Artificial Intelligence & Theory",
-    items: [
-      { name: "IOAI Materials", url: "https://ioai-official.org", desc: "International Olympiad in Artificial Intelligence foundations, machine learning data tasks, and theoretical architectures." }
-    ]
-  },
-  {
-    category: "Academic & Medical Reference",
-    items: [
-      { name: "Medical English Curricula Tracking", url: "#", desc: "Foundational reference indexes, textbook companions, and system plates for advanced medical tracks." }
-    ]
-  }
+const judges = [
+  { name: "Codeforces Groups", url: "https://codeforces.com/group/Uo1lq8ZyWf/contests", badge: "Contests", desc: "Private training group, active contest simulation sets, and custom mashups." },
+  { name: "AtCoder Table", url: "https://kenkoooo.com/atcoder/#/table/", badge: "Analytics", desc: "Kenkoooo tracking dashboard for absolute problem difficulty scales and streak maintenance." },
+  { name: "oj.uz", url: "https://oj.uz/", badge: "Olympiad", desc: "Premium international informatics arena hosting official IOI, Balkan, and CEOI tasks." },
+  { name: "QOJ", url: "https://qoj.ac", badge: "Grand Prix", desc: "Universal judge hosting high-tier multi-provincial contests and elite training camps." },
+  { name: "Codeforces", url: "https://codeforces.com", badge: "Global", desc: "Main server for division rounds, global rating maintenance, and post-match editorials." },
+  { name: "AtCoder", url: "https://atcoder.jp", badge: "Global", desc: "Weekly high-quality algorithmic rounds emphasizing pure structural logic and math." }
+];
+
+const references = [
+  { name: "USACO Guide", url: "https://usaco.guide/", type: "Syllabus", desc: "The definitive structured handbook for competitive programming, tracking silver through platinum paradigms." },
+  { name: "YouKn0wWho Academy", url: "https://youkn0wwho.academy/topic-list", type: "Topic Tree", desc: "Comprehensive collection of fundamental and advanced algorithmic structures needed for international pools." },
+  { name: "Informatics Checklist", url: "https://checklist.spoi.org.in/", type: "Tracker", desc: "Granular verification matrix ensuring full mastery across advanced algorithmic subfields." },
+  { name: "CSES Problem Set", url: "https://cses.fi/problemset/", type: "Core 300", desc: "The gold standard collection of 300 classic algorithmic problems spanning DP, Graphs, and Range Queries." },
+  { name: "CP-Algorithms", url: "https://cp-algorithms.com/", type: "Reference", desc: "Mathematical derivations, visual walkthroughs, and rigid complexity analyses for standard paradigms." },
+  { name: "Mamnoon Siam Notes", url: "https://mamnoonsiam.github.io/", type: "Advanced", desc: "Elite curation of high-level optimization tricks, centroid structures, and obscure data systems." },
+  { name: "USAMO Guide", url: "https://www.usamoguide.com/", type: "Math", desc: "Mathematical problem-solving foundation to reinforce theoretical analytical frameworks." }
 ];
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title={`Links | ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
+		<BaseHead title={`Olympiad Index | ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
 		<style>
 			main {
-				max-width: 650px;
+				max-width: 800px;
 				margin: 0 auto;
 				padding: 2rem 1rem;
 			}
 			.intro-block {
-				margin-bottom: 2.5rem;
+				margin-bottom: 2rem;
+				border-left: 3px solid var(--accent-green);
+				padding-left: 1rem;
 			}
 			.intro-block p {
 				color: var(--text-muted);
 				font-size: 0.95rem;
-				margin-top: 0.5rem;
+				margin: 0.25rem 0 0 0;
 			}
-			.category-section {
-				margin-bottom: 2rem;
-			}
-			.category-title {
+			.section-title {
 				font-family: var(--font-mono);
 				color: var(--accent-green);
-				font-size: 1rem;
+				font-size: 0.95rem;
 				font-weight: 600;
-				margin: 2rem 0 1rem 0;
-				border-bottom: 1px solid var(--border-color);
-				padding-bottom: 0.4rem;
-				text-transform: lowercase;
+				margin: 2.5rem 0 1rem 0;
+				letter-spacing: 0.5px;
 			}
-			.link-grid {
+			
+			/* Active Judges Layout - Dense 2-Column Grid */
+			.judge-grid {
 				display: grid;
-				grid-template-columns: 1fr;
+				grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
 				gap: 0.75rem;
 			}
-			.link-card {
+			.judge-card {
 				background: var(--panel-color);
 				border: 1px solid var(--border-color);
 				border-radius: 6px;
-				padding: 1rem;
+				padding: 0.85rem;
 				text-decoration: none;
-				transition: border-color 0.15s ease, transform 0.15s ease;
-				display: block;
+				display: flex;
+				flex-direction: column;
+				transition: border-color 0.12s ease;
 			}
-			.link-card:hover {
+			.judge-card:hover {
 				border-color: var(--accent);
-				transform: translateX(4px);
 				text-decoration: none;
 			}
-			.link-name {
+			.card-header {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin-bottom: 0.35rem;
+			}
+			.card-title {
 				color: var(--accent);
 				font-weight: 600;
-				font-size: 1.05rem;
-				display: inline-flex;
-				align-items: center;
+				font-size: 0.95rem;
+				font-family: var(--font-sans);
 			}
-			.link-card:hover .link-name {
+			.judge-card:hover .card-title {
 				color: #f0f6fc;
 				text-decoration: underline;
 			}
-			.link-desc {
+			.badge {
+				font-family: var(--font-mono);
+				font-size: 0.75rem;
+				background: rgba(88, 166, 255, 0.1);
+				color: var(--accent);
+				padding: 0.15rem 0.4rem;
+				border-radius: 4px;
+				border: 1px solid rgba(88, 166, 255, 0.2);
+			}
+			.card-desc {
 				color: var(--text-main);
-				font-size: 0.88rem;
-				margin: 0.35rem 0 0 0;
+				font-size: 0.85rem;
+				margin: 0;
+				line-height: 1.4;
+			}
+
+			/* Reference List Layout - Clean Dense Rows */
+			.ref-list {
+				display: flex;
+				flex-direction: column;
+				gap: 0.5rem;
+			}
+			.ref-row {
+				display: flex;
+				align-items: flex-start;
+				background: var(--panel-color);
+				border: 1px solid var(--border-color);
+				border-radius: 6px;
+				padding: 0.75rem 1rem;
+				text-decoration: none;
+				transition: border-color 0.12s ease, transform 0.12s ease;
+			}
+			.ref-row:hover {
+				border-color: var(--accent-green);
+				transform: translateX(3px);
+				text-decoration: none;
+			}
+			.type-tag {
+				font-family: var(--font-mono);
+				font-size: 0.75rem;
+				color: var(--text-muted);
+				min-width: 90px;
+				padding-top: 0.15rem;
+			}
+			.ref-content {
+				display: flex;
+				flex-direction: column;
+				flex-grow: 1;
+			}
+			.ref-title {
+				color: var(--accent);
+				font-weight: 600;
+				font-size: 0.95rem;
+			}
+			.ref-row:hover .ref-title {
+				color: var(--accent-green);
+			}
+			.ref-desc {
+				color: var(--text-main);
+				font-size: 0.85rem;
+				margin: 0.15rem 0 0 0;
 				line-height: 1.4;
 			}
 		</style>
@@ -101,25 +158,37 @@ const resourceGroups = [
 		<Header />
 		<main>
 			<div class="intro-block">
-				<h1 style="font-family: var(--font-mono); margin: 0;">~/useful-links</h1>
-				<p>A curated engineering dashboard indexing the specialized tools, reference materials, and core theory platforms I utilize.</p>
+				<h1 style="font-family: var(--font-mono); margin: 0; font-size: 1.6rem;">~/ioi-training-index</h1>
+				<p>A centralized indexing of core judges, theory frameworks, and problem-tracking matrices for competitive programming.</p>
 			</div>
 
-			{resourceGroups.map((group) => (
-				<div class="category-section">
-					<div class="category-title">// {group.category}</div>
-					<div class="link-grid">
-						{group.items.map((item) => (
-							<a href={item.url} target="_blank" rel="noopener noreferrer" class="link-card">
-								<div class="link-name">
-									{item.name} <span style="font-size: 0.85rem; margin-left: 0.4rem;">↗</span>
-								</div>
-								<p class="link-desc">{item.desc}</p>
-							</a>
-						))}
-					</div>
-				</div>
-			))}
+			<!-- Core Evaluation Hubs -->
+			<div class="section-title"># ACTIVE_EVALUATION_ENVIRONMENTS</div>
+			<div class="judge-grid">
+				{judges.map((j) => (
+					<a href={j.url} target="_blank" rel="noopener noreferrer" class="judge-card">
+						<div class="card-header">
+							<span class="card-title">{j.name} ↗</span>
+							<span class="badge">{j.badge}</span>
+						</div>
+						<p class="card-desc">{j.desc}</p>
+					</a>
+				))}
+			</div>
+
+			<!-- Curated Syllabus and Guides -->
+			<div class="section-title"># CORE_THEORY_AND_CURRICULUM_MATRICES</div>
+			<div class="ref-list">
+				{references.map((r) => (
+					<a href={r.url} target="_blank" rel="noopener noreferrer" class="ref-row">
+						<div class="type-tag">[{r.type}]</div>
+						<div class="ref-content">
+							<span class="ref-title">{r.name} ↗</span>
+							<p class="ref-desc">{r.desc}</p>
+						</div>
+					</a>
+				))}
+			</div>
 		</main>
 		<Footer />
 	</body>
