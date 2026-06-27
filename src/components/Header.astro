@@ -6,13 +6,80 @@ import { SITE_TITLE } from '../consts';
 <header>
 	<nav class="nav-container">
 		<div class="brand">
-			<a href="/" style="color: var(--accent-green); font-weight: bold; font-family: var(--font-mono);">Seferovic</a>
+			<a href="/" style="color: var(--accent-green); font-weight: bold; font-family: var(--font-mono);">{SITE_TITLE}</a>
 		</div>
-		<div class="internal-links">
-			<HeaderLink href="/">~/home</HeaderLink>
-			<HeaderLink href="/blog">~/materials</HeaderLink>
-			<HeaderLink href="/links">~/links</HeaderLink>
-			<HeaderLink href="/hof">~/hof</HeaderLink>
+		<div class="nav-right">
+			<div class="internal-links">
+				<HeaderLink href="/">~/home</HeaderLink>
+				<HeaderLink href="/blog">~/materials</HeaderLink>
+				<HeaderLink href="/links">~/links</HeaderLink>
+				<HeaderLink href="/hof">~/hof</HeaderLink>
+			</div>
+			<div class="lang-selector">
+				<button class="lang-btn active" data-lang="en">EN</button>
+				<span class="divider">/</span>
+				<button class="lang-btn" data-lang="tr">TR</button>
+			</div>
 		</div>
 	</nav>
 </header>
+
+<style>
+	header {
+		border-bottom: 1px solid var(--border-color);
+		background-color: var(--panel-color);
+		padding: 1rem 0;
+	}
+	.nav-container {
+		max-width: 800px;
+		margin: 0 auto;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 0 1rem;
+	}
+	.nav-right {
+		display: flex;
+		align-items: center;
+		gap: 2rem;
+	}
+	header a {
+		color: var(--text-muted);
+		font-family: var(--font-mono);
+		font-size: 0.9rem;
+		margin-right: 1rem;
+		text-decoration: none;
+	}
+	header a.active, header a:hover {
+		color: var(--accent-green);
+	}
+	.lang-selector {
+		font-family: var(--font-mono);
+		font-size: 0.85rem;
+		color: var(--text-muted);
+		display: flex;
+		align-items: center;
+		gap: 0.25rem;
+	}
+	.lang-btn {
+		background: none;
+		border: none;
+		color: var(--text-muted);
+		cursor: pointer;
+		font-family: inherit;
+		font-size: inherit;
+		padding: 0;
+		transition: color 0.1s ease;
+	}
+	.lang-btn:hover {
+		color: var(--accent);
+	}
+	.lang-btn.active {
+		color: var(--accent-green);
+		font-weight: bold;
+	}
+	.divider {
+		color: var(--border-color);
+		user-select: none;
+	}
+</style>
