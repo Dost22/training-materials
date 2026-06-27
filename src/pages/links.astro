@@ -36,10 +36,19 @@ const aiOlympiad = [
   { name: "DeepLearning.AI", url: "https://learn.deeplearning.ai/", tag: "Courses", desc: "Model uygulamalarını ve fine-tuning mekaniklerini parçalara ayıran kısa kurs modülleri." },
   { name: "NumPy Quickstart Guide", url: "https://numpy.org/doc/stable/user/quickstart.html", tag: "Docs", desc: "Vektörleştirme, geniş dizi yapıları ve hızlı matris dönüşümleri kılavuzu." },
   { name: "Nitro-AI Preparation Hub", url: "https://olimpiada.nitro-ai.org/ro/prepare", tag: "Training", desc: "Geçmiş olimpiyat veri kümeleri, çözümler ve ortam kurulumları." },
-  { name: "Pandas Cookbook", url: "https://pandas.pydata.org/pandas-docs/stable/user_guide/cookbook.html#cookbook", tag: "Docs", desc: "Veri manipülasyonu ve özellik matrisi montajı için optimizasyon yolları." },
-  { name: "AI Club (Avalur)", url: "https://avalur.github.io/ai_club.html", tag: "Notes", desc: "Yapay zeka olimpiyatları için öğrenme yolları ve teorik not derlemeleri." },
-  { name: "NLTK Natural Language Book", url: "https://www.nltk.org/book/ch00.html", tag: "Book", desc: "Metin vektörleştirme ve tokenizasyon paradigmaları için kesin rehber." },
-  { name: "TensorFlow Playground", url: "https://playground.tensorflow.org/", tag: "Visualizer", desc: "Geri yayılımı ve aktivasyon fonksiyonlarını görselleştirmek için etkileşimli alan." }
+  { name: "Pandas Cookbook", url: "https://pandas.pydata.org/pandas-docs/stable/user_guide/cookbook.html#cookbook", tag: "Docs", desc: "Veri çerçevesi temizleme, yapısal dilimleme ve özellik matrisi montajı için optimizasyon yolları." },
+  { name: "AI Club (Avalur)", url: "https://avalur.github.io/ai_club.html", tag: "Notes", desc: "Özel yapay zeka havuzları için öğrenme yolları, algoritmik teori ve yarışma ipuçlarının yoğun derlemesi." },
+  { name: "NLTK Natural Language Book", url: "https://www.nltk.org/book/ch00.html", tag: "Book", desc: "Linguistik veri ayrıştırma, metin vektörleştirme ve tokenizasyon paradigmaları için kesin rehber." },
+  { name: "TensorFlow Playground", url: "https://playground.tensorflow.org/", tag: "Visualizer", desc: "Geri yayılımı, aktivasyon eşiklerini ve özellik haritalarını görselleştirmek için etkileşimli sinir ağı alanı." }
+];
+
+const youtubeChannels = [
+  { name: "Errichto", url: "https://www.youtube.com/@Errichto", tag: "Algorithms", desc: "Klasik algoritmik paradigmalar, binary search hileleri ve hem standart hem de ileri düzey (hard) problem çözme yayınları." },
+  { name: "William Fiset", url: "https://www.youtube.com/@WilliamFiset", tag: "Graph / DS", desc: "Graf teorisi, veri yapıları ve dinamik programlama üzerine sektör standardı temiz görsel anlatımlar." },
+  { name: "SecondThread", url: "https://www.youtube.com/@SecondThread", tag: "CP / Tutorials", desc: "Sıra dışı veri yapıları, Codeforces turları ve algoritma kampları için hazırladığı ileri düzey oynatma listeleri." },
+  { name: "Algorithms Live!", url: "https://www.youtube.com/@AlgorithmsLive", tag: "Advanced CP", desc: "Uluslararası arenalardan (ICPC, IOI) elit algoritmaların canlı kodlama ve tahta üzerinde derinlemesine analizi." },
+  { name: "Pavel Mavrin", url: "https://www.youtube.com/@PavelMavrin", tag: "Theory / Rus", desc: "St Petersburg ekolünden, enformatik olimpiyatları seviyesinde matematiksel ve yapısal algoritma kanıtları." },
+  { name: "Radoslav Dimitrov", url: "https://www.youtube.com/@RadoslavDimitrov", tag: "IOI / CP", desc: "Balkan ve uluslararası olimpiyat düzeyinde gelişmiş veri yapıları (Segment Tree varyasyonları) ve problem analizleri." }
 ];
 ---
 
@@ -49,9 +58,10 @@ const aiOlympiad = [
 		<BaseHead title={`Bağlantılar | ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
 		<style>
 			main {
-				max-width: 800px;
+				max-width: 960px;
 				margin: 0 auto;
 				padding: 3rem 1.5rem;
+				box-sizing: border-box;
 			}
 			.intro-block {
 				margin-bottom: 2.5rem;
@@ -73,11 +83,27 @@ const aiOlympiad = [
 				border-bottom: 1px dashed var(--border-color);
 				padding-bottom: 0.4rem;
 			}
+			
+			/* GRID PANELS */
 			.judge-grid {
 				display: grid;
 				grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
 				gap: 0.85rem;
+				list-style-type: none;
+				padding: 0;
+				margin: 0;
 			}
+			
+			@media (max-width: 720px) {
+				.judge-grid {
+					grid-template-columns: 1fr;
+					gap: 0.5rem;
+				}
+				main {
+					padding: 1.5rem 1rem;
+				}
+			}
+
 			.judge-card {
 				background: var(--panel-color);
 				border: 1px solid var(--border-color);
@@ -86,11 +112,12 @@ const aiOlympiad = [
 				text-decoration: none;
 				display: flex;
 				flex-direction: column;
-				transition: border-color 0.12s ease;
+				transition: border-color 0.12s ease, box-shadow 0.12s ease;
 			}
 			.judge-card:hover {
 				border-color: var(--accent);
 				text-decoration: none;
+				box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 			}
 			.card-header {
 				display: flex;
@@ -118,10 +145,15 @@ const aiOlympiad = [
 				margin: 0;
 				line-height: 1.45;
 			}
+			
+			/* LIST MATRIX ROW PANELS */
 			.ref-list {
 				display: flex;
 				flex-direction: column;
 				gap: 0.6rem;
+				list-style-type: none;
+				padding: 0;
+				margin: 0;
 			}
 			.ref-row {
 				display: flex;
@@ -138,11 +170,22 @@ const aiOlympiad = [
 				transform: translateX(3px);
 				text-decoration: none;
 			}
+			
+			@media (max-width: 600px) {
+				.ref-row {
+					flex-direction: column;
+					gap: 0.4rem;
+				}
+				.type-tag {
+					min-width: auto !important;
+				}
+			}
+
 			.type-tag {
 				font-family: var(--font-mono);
 				font-size: 0.75rem;
 				color: var(--text-muted);
-				min-width: 120px;
+				min-width: 140px;
 				padding-top: 0.1rem;
 				flex-shrink: 0;
 			}
@@ -219,6 +262,19 @@ const aiOlympiad = [
 						<div class="ref-content">
 							<span class="ref-title">{ai.name} ↗</span>
 							<p class="ref-desc">{ai.desc}</p>
+						</div>
+					</a>
+				))}
+			</div>
+
+			<div class="section-title"># RECOMMENDED_YOUTUBE_CHANNELS</div>
+			<div class="ref-list">
+				{youtubeChannels.map((yt) => (
+					<a href={yt.url} target="_blank" rel="noopener noreferrer" class="ref-row">
+						<div class="type-tag" style="color: #ff5555;">[YT // {yt.tag}]</div>
+						<div class="ref-content">
+							<span class="ref-title">{yt.name} ↗</span>
+							<p class="ref-desc">{yt.desc}</p>
 						</div>
 					</a>
 				))}
