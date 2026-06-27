@@ -148,78 +148,13 @@ const problemPool = [
 <html lang="tr">
 	<head>
 		<BaseHead title={`Hall of Fame | ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
-		<style>
-			main {
-				max-width: 800px;
-				margin: 0 auto;
-				padding: 2rem 1rem;
-			}
-			.intro-block {
-				margin-bottom: 2.5rem;
-				border-left: 3px solid var(--accent-green);
-				padding-left: 1rem;
-			}
-			.intro-block p {
-				color: var(--text-muted);
-				font-size: 0.95rem;
-				margin: 0.25rem 0 0 0;
-			}
-			.category-block {
-				margin-bottom: 2.5rem;
-			}
-			.category-title {
-				font-family: var(--font-mono);
-				color: var(--accent-green);
-				font-size: 0.95rem;
-				font-weight: 600;
-				margin: 0 0 0.85rem 0;
-				letter-spacing: 0.5px;
-			}
-			.grid-matrix {
-				display: grid;
-				grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-				gap: 0.5rem;
-			}
-			.prob-card {
-				display: flex;
-				align-items: center;
-				background: var(--panel-color);
-				border: 1px solid var(--border-color);
-				border-radius: 6px;
-				padding: 0.75rem 1rem;
-				text-decoration: none;
-				transition: border-color 0.12s ease;
-			}
-			.prob-card:hover {
-				border-color: var(--accent);
-				text-decoration: none;
-			}
-			.bracket-tag {
-				font-family: var(--font-mono);
-				font-size: 0.75rem;
-				color: var(--text-muted);
-				margin-right: 0.75rem;
-				user-select: none;
-			}
-			.prob-title {
-				color: var(--text-main);
-				font-size: 0.9rem;
-				font-weight: 500;
-				overflow: hidden;
-				text-overflow: ellipsis;
-				white-space: nowrap;
-			}
-			.prob-card:hover .prob-title {
-				color: var(--accent);
-			}
-		</style>
-	</head>
+		</head>
 	<body>
 		<Header />
 		<main>
 			<div class="intro-block">
-				<h1 style="font-family: var(--font-mono); margin: 0; font-size: 1.6rem;">~/algoritmik-hof</h1>
-				<p>Üst düzey matematiksel ve algoritmik problemleri takip eden yüksek yoğunluklu değerlendirme matrisi.</p>
+				<h1 style="font-family: var(--font-mono); margin: 0; font-size: 1.6rem;">~/algorithmic-hof</h1>
+				<p>Seçkin matematiksel ve algoritmik problemler için yapılandırılmış arşiv ve takip listesi.</p>
 			</div>
 
 			{problemPool.map((group) => (
@@ -228,7 +163,7 @@ const problemPool = [
 					<div class="grid-matrix">
 						{group.problems.map((prob) => (
 							<a href={prob.url} target="_blank" rel="noopener noreferrer" class="prob-card">
-								<span class="bracket-tag">[ÇALIŞTIR]</span>
+								<span class="bracket-tag">[RUN]</span>
 								<span class="prob-title">{prob.name} ↗</span>
 							</a>
 						))}
