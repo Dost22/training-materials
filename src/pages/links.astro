@@ -5,27 +5,26 @@ import BaseHead from '../components/BaseHead.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
 const judges = [
-  { name: "Codeforces Groups", url: "https://codeforces.com/group/Uo1lq8ZyWf/contests", badge: "Contests", desc: "Özel eğitim grupları ve aktif yarışma simülasyon setleri." },
-  { name: "AtCoder Table", url: "https://kenkoooo.com/atcoder/#/table/", badge: "Analytics", desc: "Problem zorluk ölçekleri ve günlük seri takibi için Kenkoooo paneli." },
-  { name: "oj.uz", url: "https://oj.uz/", badge: "Olimpiyat", desc: "Resmi IOI, Balkan ve CEOI problemlerine ev sahipliği yapan arşiv." },
-  { name: "QOJ", url: "https://qoj.ac", badge: "Grand Prix", desc: "Üst düzey uluslararası yarışmalar ve elit eğitim kampları için ortak judge." },
-  { name: "Codeforces", url: "https://codeforces.com", badge: "Global", desc: "Klasik div yarışmaları, küresel reyting takibi ve çözüm analizleri." },
-  { name: "AtCoder", url: "https://atcoder.jp", badge: "Global", desc: "Matematiksel ve yapısal mantığa dayalı haftalık algoritmik yarışmalar." }
+  { name: "AtCoder Table", url: "https://kenkoooo.com/atcoder/#/table/", badge: "Analytics", desc: "Atcoder problem arşivi" },
+  { name: "oj.uz", url: "https://oj.uz/", badge: "Olimpiyat", desc: "Birçok OI problemini içeren arşiv." },
+  { name: "QOJ", url: "https://qoj.ac", badge: "Grand Prix", desc: "Günümüzün en kapsamlı judge'ı" },
+  { name: "Codeforces", url: "https://codeforces.com", badge: "Global", desc: "En büyük ve popüler ICPC sitesi" },
+  { name: "AtCoder", url: "https://atcoder.jp", badge: "Global", desc: "Algodan çok matematik ve mantığa dayalı haftalık algoritmik yarışmalar." }
 ];
 
 const references = [
-  { name: "USACO Guide", url: "https://usaco.guide/", type: "Syllabus", desc: "Gümüşten platine kadar tüm paradigmaları içeren, rekabetçi programlama için en iyi rehber." },
-  { name: "YouKn0wWho Academy", url: "https://youkn0wwho.academy/topic-list", type: "Topic List", desc: "Uluslararası arenalar için gereken temel ve ileri düzey algoritmik yapıların listesi." },
-  { name: "Informatics Checklist", url: "https://checklist.spoi.org.in/", type: "Checklist", desc: "İleri algoritmik alanlarda durum takibi sağlamak için hazırlanmış doğrulama matrisi." },
+  { name: "USACO Guide", url: "https://usaco.guide/", type: "Syllabus", desc: "Rekabetçi programlama için en iyi kaynak." },
+  { name: "YouKn0wWho Academy", url: "https://youkn0wwho.academy/topic-list", type: "Topic List", desc: "Aklınıza gelicek her konuda envai çeşit soru." },
+  { name: "Informatics Checklist", url: "https://checklist.spoi.org.in/", type: "Checklist", desc: "Olimpiyat sorularında durum takibi sağlamak için checklist." },
   { name: "CSES Problem Set", url: "https://cses.fi/problemset/", type: "Core 300", desc: "DP, Graf ve Aralık Sorgularını kapsayan 300 klasik algoritmik problemden oluşan altın standart." },
   { name: "CP-Algorithms", url: "https://cp-algorithms.com/", type: "Reference", desc: "Standart algoritmalara yönelik matematiksel çıkarımlar ve karmaşıklık analizleri." },
-  { name: "Mamnoon Siam Notes", url: "https://mamnoonsiam.github.io/", type: "Advanced", desc: "Üst düzey optimizasyonlar, centroid yapıları ve nadir veri sistemleri üzerine notlar." },
-  { name: "USAMO Guide", url: "https://www.usamoguide.com/", type: "Math", desc: "Teorik analitik çerçeveleri güçlendirmek için matematiksel problem çözme temelleri." }
+  { name: "Mamnoon Siam Notes", url: "https://mamnoonsiam.github.io/", type: "Advanced", desc: "Obscure olmakla beraber fevkalade kaynaklar" },
+  { name: "USAMO Guide", url: "https://www.usamoguide.com/", type: "Math", desc: "Yepyeni (iyi bir şey mi bilmem) USACO matematik klonu." }
 ];
 
 const literature = [
-  { name: "Competitive Programmer's Handbook", url: "https://cses.fi/book/book.pdf", source: "Antti Laaksonen", desc: "Modern rekabetçi algoritmaların temel el kitabı." },
-  { name: "Modern Olympiad Number Theory (MONT)", url: "https://www.cantab.net/users/aditya/books/ModernOlympiadNumberTheory.pdf", source: "Aditya Khurmi", desc: "Gelişmiş modüler aritmetik, p-adik değerlemeler ve diofant denklemleri." }
+  { name: "Competitive Programmer's Handbook", url: "https://cses.fi/book/book.pdf", source: "Antti Laaksonen", desc: "CP holy bible" },
+  { name: "Modern Olympiad Number Theory (MONT)", url: "https://www.cantab.net/users/aditya/books/ModernOlympiadNumberTheory.pdf", source: "Aditya Khurmi", desc: "Sonlu matematiğe beginner-friendly bir giriş." }
 ];
 
 const aiOlympiad = [
@@ -35,17 +34,17 @@ const aiOlympiad = [
   { name: "MML Textbook (Tam PDF)", url: "https://mml-book.github.io/book/mml-book.pdf", tag: "Book", desc: "Matematiksel analiz için temel MML müfredatının doğrudan PDF derlemesi." },
   { name: "DeepLearning.AI", url: "https://learn.deeplearning.ai/", tag: "Courses", desc: "Model uygulamalarını ve fine-tuning mekaniklerini parçalara ayıran kısa kurs modülleri." },
   { name: "NumPy Quickstart Guide", url: "https://numpy.org/doc/stable/user/quickstart.html", tag: "Docs", desc: "Vektörleştirme, geniş dizi yapıları ve hızlı matris dönüşümleri kılavuzu." },
-  { name: "Nitro-AI Preparation Hub", url: "https://olimpiada.nitro-ai.org/ro/prepare", tag: "Training", desc: "Geçmiş olimpiyat veri kümeleri, çözümler ve ortam kurulumları." },
-  { name: "Pandas Cookbook", url: "https://pandas.pydata.org/pandas-docs/stable/user_guide/cookbook.html#cookbook", tag: "Docs", desc: "Veri çerçevesi temizleme, yapısal dilimleme ve özellik matrisi montajı için optimizasyon yolları." },
+  { name: "Nitro-AI Preparation Hub", url: "https://olimpiada.nitro-ai.org/ro/prepare", tag: "Training", desc: "EN ÖNEMLİ KAYNAK :romania: " },
+  { name: "Pandas Cookbook", url: "https://pandas.pydata.org/pandas-docs/stable/user_guide/cookbook.html#cookbook", tag: "Docs", desc: "İleri ML trikleri" },
   { name: "AI Club (Avalur)", url: "https://avalur.github.io/ai_club.html", tag: "Notes", desc: "Özel yapay zeka havuzları için öğrenme yolları, algoritmik teori ve yarışma ipuçlarının yoğun derlemesi." },
   { name: "NLTK Natural Language Book", url: "https://www.nltk.org/book/ch00.html", tag: "Book", desc: "Linguistik veri ayrıştırma, metin vektörleştirme ve tokenizasyon paradigmaları için kesin rehber." },
-  { name: "TensorFlow Playground", url: "https://playground.tensorflow.org/", tag: "Visualizer", desc: "Geri yayılımı, aktivasyon eşiklerini ve özellik haritalarını görselleştirmek için etkileşimli sinir ağı alanı." }
+  { name: "TensorFlow Playground", url: "https://playground.tensorflow.org/", tag: "Visualizer", desc: "Neural Network temellerini görselleştirmek için etkileşimli sinir ağı alanı." }
 ];
 
 const youtubeChannels = [
   { name: "Errichto", url: "https://www.youtube.com/@Errichto", tag: "Algorithms", desc: "Klasik algoritmik paradigmalar, binary search hileleri ve hem standart hem de ileri düzey (hard) problem çözme yayınları." },
   { name: "William Fiset", url: "https://www.youtube.com/@WilliamFiset", tag: "Graph / DS", desc: "Graf teorisi, veri yapıları ve dinamik programlama üzerine sektör standardı temiz görsel anlatımlar." },
-  { name: "SecondThread", url: "https://www.youtube.com/@SecondThread", tag: "CP / Tutorials", desc: "Sıra dışı veri yapıları, Codeforces turları ve algoritma kampları için hazırladığı ileri düzey oynatma listeleri." },
+  { name: "SecondThread", url: "https://www.youtube.com/@SecondThread", tag: "CP / Tutorials", desc: "Sıra dışı veri yapıları, Codeforces roundları ve algoritma kampları için hazırladığı ileri düzey oynatma listeleri." },
   { name: "Algorithms Live!", url: "https://www.youtube.com/@AlgorithmsLive", tag: "Advanced CP", desc: "Çok kapsamlı kaliteli konu anlatımı." },
   { name: "Pavel Mavrin", url: "https://www.youtube.com/@PavelMavrin", tag: "Theory / Rus", desc: "Dev Rigorous Arşiv." },
   { name: "Radoslav Dimitrov", url: "https://www.youtube.com/@radoslav11", tag: "IOI / CP", desc: "Gelişmiş veri yapıları." }
