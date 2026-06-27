@@ -22,3 +22,7 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+.aider*
+.aider.tags.cache.v4/
+.aider*
+.aider.tags.cache.v4/

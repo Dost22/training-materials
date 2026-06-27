@@ -5,21 +5,25 @@ import '../styles/global.css';
 import type { ImageMetadata } from 'astro';
 
 interface Props {
-	title: string;
-	description: string;
-	image?: string | ImageMetadata;
+    title: string;
+    description: string;
+    image?: string | ImageMetadata;
 }
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+// Sabit domain tanımladık, Astro.site'a olan bağımlılığı kaldırdık
+const siteBase = 'https://seferovic.vercel.app'; 
 
 const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props;
 
-// Safely handle image paths for both string paths and structural metadata objects
+// Canonical URL güvenli hale getirildi
+const canonicalURL = new URL(Astro.url.pathname, siteBase);
+
+// Image URL güvenli hale getirildi
 const imageUrl = typeof image === 'string' 
-	? new URL(image, Astro.site) 
-	: image?.src 
-		? new URL(image.src, Astro.site) 
-		: new URL('/blog-placeholder-1.jpg', Astro.site);
+    ? new URL(image, siteBase) 
+    : image?.src 
+        ? new URL(image.src, siteBase) 
+        : new URL('/blog-placeholder-1.jpg', siteBase);
 ---
 
 <meta charset="utf-8" />
