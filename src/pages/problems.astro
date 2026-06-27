@@ -1,0 +1,247 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import BaseHead from '../components/BaseHead.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+
+const problemPool = [
+  {
+    category: "Asia-Pacific Informatics Olympiad (APIO)",
+    problems: [
+      { name: "APIO 2024 - Show", url: "https://oj.uz/problem/view/APIO24_show" },
+      { name: "APIO 2023 - Cyberland", url: "https://oj.uz/problem/view/APIO23_cyberland" },
+      { name: "APIO 2020 - Swap", url: "https://oj.uz/problem/view/APIO20_swap" },
+      { name: "APIO 2019 - Bridges", url: "https://oj.uz/problem/view/APIO19_bridges" },
+      { name: "APIO 2017 - Merchant", url: "https://oj.uz/problem/view/APIO17_merchant" },
+      { name: "APIO 2017 - Koala", url: "https://oj.uz/problem/view/APIO17_koala" },
+      { name: "APIO 2016 - Gap", url: "https://oj.uz/problem/view/APIO16_gap" },
+      { name: "APIO 2016 - Boat", url: "https://oj.uz/problem/view/APIO16_boat" },
+      { name: "APIO 2015 - Sculpture", url: "https://oj.uz/problem/view/APIO15_sculpture" }
+    ]
+  },
+  {
+    category: "European Girls' Olympiad in Informatics (EGOI)",
+    problems: [
+      { name: "EGOI 2024 - Dark Ride", url: "https://qoj.ac/contest/2343/problem/13166" },
+      { name: "EGOI 2024 - Monster-Go", url: "https://qoj.ac/contest/2343/problem/13167" },
+      { name: "EGOI 2024 - Laser Strike", url: "https://qoj.ac/contest/2344/problem/13172" },
+      { name: "EGOI 2024 - Bouquet", url: "https://oj.uz/problem/view/EGOI24_bouquet" },
+      { name: "EGOI 2023 - Lego Wall", url: "https://qoj.ac/problem/5179" }
+    ]
+  },
+  {
+    category: "International Olympiad in Informatics (IOI)",
+    problems: [
+      { name: "IOI 2024 - Message", url: "https://oj.uz/problem/view/IOI24_message" },
+      { name: "IOI 2023 - Longest Trip", url: "https://oj.uz/problem/view/IOI23_longesttrip" },
+      { name: "IOI 2022 - Insects", url: "https://oj.uz/problem/view/IOI22_insects" },
+      { name: "IOI 2022 - Prison", url: "https://oj.uz/problem/view/IOI22_prison" },
+      { name: "IOI 2020 - Stations", url: "https://oj.uz/problem/view/IOI20_stations" },
+      { name: "IOI 2020 - Mushrooms", url: "https://oj.uz/problem/view/IOI20_mushrooms" },
+      { name: "IOI 2019 - Shoes", url: "https://oj.uz/problem/view/IOI19_shoes" },
+      { name: "IOI 2019 - Vision", url: "https://oj.uz/problem/view/IOI19_vision" },
+      { name: "IOI 2018 - Doll", url: "https://oj.uz/problem/view/IOI18_doll" },
+      { name: "IOI 2017 - Wiring", url: "https://oj.uz/problem/view/IOI17_wiring" },
+      { name: "IOI 2016 - Messy", url: "https://oj.uz/problem/view/IOI16_messy" },
+      { name: "IOI 2014 - Wall", url: "https://oj.uz/problem/view/IOI14_wall" },
+      { name: "IOI 2014 - Holiday", url: "https://oj.uz/problem/view/IOI14_holiday" }
+    ]
+  },
+  {
+    category: "Japanese Olympiad in Informatics (JOI)",
+    problems: [
+      { name: "JOI 2024 - Island", url: "https://oj.uz/problem/view/JOI24_island" },
+      { name: "JOI 2022 - Dango 3", url: "https://oj.uz/problem/view/JOI22_dango3" },
+      { name: "JOI 2020 - Capital City", url: "https://oj.uz/problem/view/JOI20_capital_city" },
+      { name: "JOI 2020 - Dango 2", url: "https://oj.uz/problem/view/JOI20_dango2" },
+      { name: "JOI 2019 - Examination", url: "https://oj.uz/problem/view/JOI19_examination" },
+      { name: "JOI 2018 - Bitaro the Beaver", url: "https://oj.uz/problem/view/JOI18_bitaro" },
+      { name: "JOI 2018 - Library", url: "https://oj.uz/problem/view/JOI18_library" },
+      { name: "JOI 2019 - Jumps", url: "https://oj.uz/problem/view/JOI19_jumps" },
+      { name: "JOI 2018 - Xylophone", url: "https://oj.uz/problem/view/JOI18_xylophone" },
+      { name: "JOI 2016 - Selling RNA", url: "https://oj.uz/problem/view/JOI16_selling_rna" },
+      { name: "JOI 2014 - Secret", url: "https://oj.uz/problem/view/JOI14_secret" }
+    ]
+  },
+  {
+    category: "National Olympiad in Informatics / JOI Extras (NOI/SG/JOI)",
+    problems: [
+      { name: "NOI SG 2024 - Toxic Gene 2", url: "https://qoj.ac/problem/8592" },
+      { name: "NOI SG 2023 - Toxic", url: "https://oj.uz/problem/view/NOI23_toxic" },
+      { name: "NOI SG 2023 - Airplane", url: "https://oj.uz/problem/view/NOI23_airplane" },
+      { name: "JOI 2018 - Snake Escaping", url: "https://oj.uz/problem/view/JOI18_snake_escaping" },
+      { name: "JOI 2018 - Commuter Pass", url: "https://oj.uz/problem/view/JOI18_commuter_pass" },
+      { name: "JOI 2021 - Ho T4", url: "https://oj.uz/problem/view/JOI21_ho_t4" },
+      { name: "JOI 2021 - Ho T3", url: "https://oj.uz/problem/view/JOI21_ho_t3" }
+    ]
+  },
+  {
+    category: "Polish Olympiad in Informatics (POI)",
+    problems: [
+      { name: "POI - Solar Lamps", url: "https://qoj.ac/problem/308" },
+      { name: "POI - Parade", url: "https://qoj.ac/problem/538" },
+      { name: "POI - Renovation", url: "https://qoj.ac/problem/395" },
+      { name: "POI - Long Travels", url: "https://qoj.ac/problem/398" }
+    ]
+  },
+  {
+    category: "Central European Olympiad in Informatics (CEOI)",
+    problems: [
+      { name: "CEOI 2024 - Theseus", url: "https://qoj.ac/problem/14056" },
+      { name: "CEOI 2024 - Battle", url: "https://oj.uz/problem/view/CEOI24_battle" },
+      { name: "CEOI 2024 - Toy", url: "https://oj.uz/problem/view/CEOI24_toy" },
+      { name: "CEOI 2023 - Light", url: "https://oj.uz/problem/view/CEOI23_light" },
+      { name: "CEOI 2022 - Homework", url: "https://oj.uz/problem/view/CEOI22_homework" },
+      { name: "CEOI 2019 - Cubeword", url: "https://oj.uz/problem/view/CEOI19_cubeword" },
+      { name: "CEOI 2019 - Diameter", url: "https://oj.uz/problem/view/CEOI19_diameter" },
+      { name: "CEOI 2017 - One-Way Streets", url: "https://oj.uz/problem/view/CEOI17_oneway" },
+      { name: "CEOI 2014 - Question Grader", url: "https://oj.uz/problem/view/CEOI14_question_grader" },
+      { name: "CEOI 2011 - Balloons", url: "https://oj.uz/problem/view/CEOI11_bal" }
+    ]
+  },
+  {
+    category: "Baltic Olympiad in Informatics (BOI)",
+    problems: [
+      { name: "BOI 2024 - Tour", url: "https://qoj.ac/contest/2012/problem/10882" },
+      { name: "BOI 2024 - Acronym", url: "https://qoj.ac/contest/2012/problem/10881" },
+      { name: "BOI 2024 - Wall", url: "https://oj.uz/problem/view/BOI24_wall" },
+      { name: "BOI 2023 - Staring Contest", url: "https://qoj.ac/contest/1527/problem/8267" },
+      { name: "BOI 2021 - Books", url: "https://oj.uz/problem/view/BOI21_books" },
+      { name: "BOI 2020 - Joker", url: "https://oj.uz/problem/view/BOI20_joker" },
+      { name: "BOI 2020 - Colors", url: "https://oj.uz/problem/view/BOI20_colors" },
+      { name: "BOI 2019 - Valley", url: "https://oj.uz/problem/view/BOI19_valley" },
+      { name: "BOI 2019 - Nautilus", url: "https://oj.uz/problem/view/BOI19_nautilus" }
+    ]
+  },
+  {
+    category: "International Zhautykov Olympiad (IZhO)",
+    problems: [
+      { name: "IZhO 2019 - Sortbooks", url: "https://oj.uz/problem/view/IZhO19_sortbooks" },
+      { name: "IZhO 2017 - Money", url: "https://oj.uz/problem/view/IZhO17_money" },
+      { name: "IZhO 2017 - Subsequence", url: "https://oj.uz/problem/view/IZhO17_subsequence" }
+    ]
+  },
+  {
+    category: "Balkan Olympiad in Informatics (BalkOI)",
+    problems: [
+      { name: "BalkOI 2024 - Tiling Madness", url: "https://eolymp.com/en/compete/3j07flbivh57n9553o7prkce1s/problem/2" },
+      { name: "BalkOI 2011 - Compare", url: "https://oj.uz/problem/view/balkan11_cmp" },
+      { name: "BalkOI 2011 - Time Is Money", url: "https://oj.uz/problem/view/balkan11_timeismoney" }
+    ]
+  },
+  {
+    category: "Romanian Master of Informatics (RMI)",
+    problems: [
+      { name: "RMI 2024 - AA Tree", url: "https://qoj.ac/contest/1925/problem/10141" },
+      { name: "RMI 2024 - Statues", url: "https://qoj.ac/contest/1926/problem/10145" },
+      { name: "RMI 2023 - Floppy", url: "https://qoj.ac/contest/168/problem/147" },
+      { name: "RMI 2023 - Peru", url: "https://qoj.ac/contest/168/problem/149" },
+      { name: "RMI 2023 - Nice Lines", url: "https://qoj.ac/contest/169/problem/151" },
+      { name: "RMI 2023 - Sum Zero", url: "https://qoj.ac/contest/169/problem/150" }
+    ]
+  }
+];
+---
+
+<!doctype html>
+<html lang="tr">
+	<head>
+		<BaseHead title={`Hall of Fame | ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
+		<style>
+			main {
+				max-width: 800px;
+				margin: 0 auto;
+				padding: 3rem 1.5rem;
+			}
+			.intro-block {
+				margin-bottom: 3rem;
+				border-left: 3px solid var(--accent-green);
+				padding-left: 1.2rem;
+			}
+			.intro-block p {
+				color: var(--text-muted);
+				font-size: 0.95rem;
+				margin: 0.4rem 0 0 0;
+			}
+			.category-block {
+				margin-bottom: 3rem;
+			}
+			.category-title {
+				font-family: var(--font-mono);
+				color: var(--accent-green);
+				font-size: 0.95rem;
+				font-weight: 600;
+				margin: 0 0 1.2rem 0;
+				letter-spacing: 0.5px;
+				border-bottom: 1px dashed var(--border-color);
+				padding-bottom: 0.4rem;
+			}
+			.grid-matrix {
+				display: grid;
+				grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+				gap: 0.75rem;
+			}
+			.prob-card {
+				display: flex;
+				align-items: center;
+				background: var(--panel-color);
+				border: 1px solid var(--border-color);
+				border-radius: 6px;
+				padding: 0.85rem 1.2rem;
+				text-decoration: none;
+				transition: border-color 0.12s ease;
+			}
+			.prob-card:hover {
+				border-color: var(--accent);
+				text-decoration: none;
+			}
+			.bracket-tag {
+				font-family: var(--font-mono);
+				font-size: 0.75rem;
+				color: var(--accent);
+				margin-right: 1rem;
+				background: rgba(88, 166, 255, 0.1);
+				padding: 0.2rem 0.5rem;
+				border-radius: 4px;
+				border: 1px solid rgba(88, 166, 255, 0.2);
+				flex-shrink: 0;
+				user-select: none;
+			}
+			.prob-title {
+				color: var(--text-main);
+				font-size: 0.9rem;
+				font-weight: 500;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+			}
+			.prob-card:hover .prob-title {
+				color: var(--accent);
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<div class="intro-block">
+				<h1 style="font-family: var(--font-mono); margin: 0; font-size: 1.6rem; color: var(--text-main);">~/curated-problems</h1>
+				<p>Seçkin matematiksel ve algoritmik problemler için yapılandırılmış arşiv ve takip listesi.</p>
+			</div>
+
+			{problemPool.map((group) => (
+				<div class="category-block">
+					<h2 class="category-title"># {group.category.toUpperCase()}</h2>
+					<div class="grid-matrix">
+						{group.problems.map((prob) => (
+							<a href={prob.url} target="_blank" rel="noopener noreferrer" class="prob-card">
+								<span class="bracket-tag">RUN</span>
+								<span class="prob-title">{prob.name} ↗</span>
+							</a>
+						))}
+					</div>
+				</div>
+			))}
+		</main>
+		<Footer />
+	</body>
+</html>
