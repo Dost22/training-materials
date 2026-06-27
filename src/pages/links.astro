@@ -5,49 +5,48 @@ import BaseHead from '../components/BaseHead.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
 const judges = [
-  { name: "Codeforces Groups", url: "https://codeforces.com/group/Uo1lq8ZyWf/contests", badge: "Contests", desc: "Private training group, active contest simulation sets, and custom mashups." },
-  { name: "AtCoder Table", url: "https://kenkoooo.com/atcoder/#/table/", badge: "Analytics", desc: "Kenkoooo tracking dashboard for absolute problem difficulty scales and streak maintenance." },
-  { name: "oj.uz", url: "https://oj.uz/", badge: "Olympiad", desc: "Premium international informatics arena hosting official IOI, Balkan, and CEOI tasks." },
-  { name: "QOJ", url: "https://qoj.ac", badge: "Grand Prix", desc: "Universal judge hosting high-tier multi-provincial contests and elite training camps." },
-  { name: "Codeforces", url: "https://codeforces.com", badge: "Global", desc: "Main server for division rounds, global rating maintenance, and post-match editorials." },
-  { name: "AtCoder", url: "https://atcoder.jp", badge: "Global", desc: "Weekly high-quality algorithmic rounds emphasizing pure structural logic and math." }
+  { name: "Codeforces Groups", url: "https://codeforces.com/group/Uo1lq8ZyWf/contests", badge: "Yarışmalar", desc: "Özel eğitim grupları, aktif yarışma simülasyon setleri ve özel seçkiler." },
+  { name: "AtCoder Table", url: "https://kenkoooo.com/atcoder/#/table/", badge: "Analitik", desc: "Problem zorluk ölçekleri ve günlük seri takibi için Kenkoooo paneli." },
+  { name: "oj.uz", url: "https://oj.uz/", badge: "Olimpiyat", desc: "Resmi IOI, Balkan ve CEOI görevlerine ev sahipliği yapan uluslararası enformatik arenası." },
+  { name: "QOJ", url: "https://qoj.ac", badge: "Grand Prix", desc: "Üst düzey çoklu eyalet yarışmaları ve elit eğitim kamplarını barındırean evrensel yargılayıcı." },
+  { name: "Codeforces", url: "https://codeforces.com", badge: "Küresel", desc: "Klasik div yarışmaları, küresel reyting takibi ve çözüm analizleri için ana sunucu." },
+  { name: "AtCoder", url: "https://atcoder.jp", badge: "Küresel", desc: "Saf yapısal mantık ve matematiğe dayalı haftalık yüksek kaliteli algoritmik yarışmalar." }
 ];
 
 const references = [
-  { name: "USACO Guide", url: "https://usaco.guide/", type: "Syllabus", desc: "The definitive structured handbook for competitive programming, tracking silver through platinum paradigms." },
-  { name: "YouKn0wWho Academy", url: "https://youkn0wwho.academy/topic-list", type: "Topic Tree", desc: "Comprehensive collection of fundamental and advanced algorithmic structures needed for international pools." },
-  { name: "Informatics Checklist", url: "https://checklist.spoi.org.in/", type: "Tracker", desc: "Granular verification matrix ensuring full mastery across advanced algorithmic subfields." },
-  { name: "CSES Problem Set", url: "https://cses.fi/problemset/", type: "Core 300", desc: "The gold standard collection of 300 classic algorithmic problems spanning DP, Graphs, and Range Queries." },
-  { name: "CP-Algorithms", url: "https://cp-algorithms.com/", type: "Reference", desc: "Mathematical derivations, visual walkthroughs, and rigid complexity analyses for standard paradigms." },
-  { name: "Mamnoon Siam Notes", url: "https://mamnoonsiam.github.io/", type: "Advanced", desc: "Elite curation of high-level optimization tricks, centroid structures, and obscure data systems." },
-  { name: "USAMO Guide", url: "https://www.usamoguide.com/", type: "Math", desc: "Mathematical problem-solving foundation to reinforce theoretical analytical frameworks." }
+  { name: "USACO Guide", url: "https://usaco.guide/", type: "Müfredat", desc: "Gümüşten platine kadar tüm paradigmaları takip eden, rekabetçi programlama için yapılandırılmış rehber." },
+  { name: "YouKn0wWho Academy", url: "https://youkn0wwho.academy/topic-list", type: "Konu Ağacı", desc: "Uluslararası arenalar için gereken temel ve ileri düzey algoritmik yapıların kapsamlı koleksiyonu." },
+  { name: "Informatics Checklist", url: "https://checklist.spoi.org.in/", type: "Takipçi", desc: "İleri algoritmik alanlarda tam uzmanlık sağlamak için hazırlanmış detaylı doğrulama matrisi." },
+  { name: "CSES Problem Set", url: "https://cses.fi/problemset/", type: "Temel 300", desc: "DP, Graf ve Aralık Sorgularını kapsayan 300 klasik algoritmik problemden oluşan altın standart." },
+  { name: "CP-Algorithms", url: "https://cp-algorithms.com/", type: "Referans", desc: "Standart paradigmalar için matematiksel çıkarımlar, görsel anlatımlar ve karmaşıklık analizleri." },
+  { name: "Mamnoon Siam Notes", url: "https://mamnoonsiam.github.io/", type: "İleri Düzey", desc: "Üst düzey optimizasyon hileleri, centroid yapıları ve nadir veri sistemlerinin elit kürasyonu." },
+  { name: "USAMO Guide", url: "https://www.usamoguide.com/", type: "Matematik", desc: "Teorik analitik çerçeveleri güçlendirmek için matematiksel problem çözme temelleri." }
 ];
 
 const literature = [
-  { name: "Competitive Programmer's Handbook", url: "https://cses.fi/book/book.pdf", source: "Antti Laaksonen", desc: "The foundational text for modern competitive algorithms. Clean layouts covering everything from range updates to string hashing." },
-  { name: "Modern Olympiad Number Theory (MONT)", url: "https://www.cantab.net/users/aditya/books/ModernOlympiadNumberTheory.pdf", source: "Aditya Khurmi", desc: "Elite mathematical foundation tracking advanced modular arithmetic, p-adic valuations, and diophantine structures." }
+  { name: "Competitive Programmer's Handbook", url: "https://cses.fi/book/book.pdf", source: "Antti Laaksonen", desc: "Modern rekabetçi algoritmaların temel kitabı. Aralık güncellemelerinden dize hashlemeye kadar temiz düzenler." },
+  { name: "Modern Olympiad Number Theory (MONT)", url: "https://www.cantab.net/users/aditya/books/ModernOlympiadNumberTheory.pdf", source: "Aditya Khurmi", desc: "Gelişmiş modüler aritmetik, p-adik değerlemeler ve diofant denklemlerini içeren matematiksel temel." }
 ];
 
 const aiOlympiad = [
-  { name: "Google Colab", url: "https://colab.research.google.com/", tag: "IDE", desc: "Cloud-hosted Jupyter environment utilized for interactive prototyping and model training pipelines." },
-  { name: "Olimpiada AI Romania", url: "https://platform.olimpiada-ai.ro/en", tag: "Judge", desc: "Official examination and testing environment hosting structured tasks and automated subtask evaluations." },
-  { name: "Mathematics for Machine Learning (MML)", url: "https://mml-book.github.io/", tag: "Theory Hub", desc: "Comprehensive portal tracking the vector spaces, matrix factorizations, and multi-variable calculus underlying machine learning." },
-  { name: "MML Textbook (Full PDF)", url: "https://mml-book.github.io/book/mml-book.pdf", tag: "Textbook", desc: "Direct compilation of the foundational MML syllabus for offline mathematical analysis." },
-  { name: "DeepLearning.AI", url: "https://learn.deeplearning.ai/", tag: "Syllabus", desc: "Short-course modules breaking down structural model implementations and fine-tuning mechanics." },
-  { name: "NumPy Quickstart Guide", url: "https://numpy.org/doc/stable/user/quickstart.html", tag: "Docs", desc: "Reference handbook outlining vectorization, broad array structures, and efficient coordinate transformations." },
-  { name: "Nitro-AI Preparation Hub", url: "https://olimpiada.nitro-ai.org/ro/prepare", tag: "Training", desc: "Targeted competitive training modules, past olympiad datasets, and environment setups." },
-  { name: "Pandas Cookbook", url: "https://pandas.pydata.org/pandas-docs/stable/user_guide/cookbook.html#cookbook", tag: "Docs", desc: "Granular idioms and optimization paths for dataframe cleaning, structural slicing, and feature matrix assembly." },
-  { name: "AI Club (Avalur)", url: "https://avalur.github.io/ai_club.html", tag: "Curated Notes", desc: "Dense, elite compilation of learning paths, algorithmic theory, and competition tricks for specialized AI pools." },
-  { name: "NLTK Natural Language Book", url: "https://www.nltk.org/book/ch00.html", tag: "Textbook", desc: "The definitive guide to linguistic data parsing, text vectorization, and tokenization paradigms." },
-  { name: "TensorFlow Playground", url: "https://playground.tensorflow.org/", tag: "Visualizer", desc: "Interactive neural network playground for visualizing backpropagation, activation thresholds, and feature maps." }
+  { name: "Google Colab", url: "https://colab.research.google.com/", tag: "IDE", desc: "Etkileşimli prototipleme ve model eğitim hatları için bulut tabanlı Jupyter ortamı." },
+  { name: "Olimpiada AI Romania", url: "https://platform.olimpiada-ai.ro/en", tag: "Yargılayıcı", desc: "Yapılandırılmış görevleri ve otomatik alt görev değerlendirmelerini barındıran resmi sınav ortamı." },
+  { name: "Mathematics for Machine Learning (MML)", url: "https://mml-book.github.io/", tag: "Teori Merkezi", desc: "Yapay zekanın temelini oluşturan vektör uzayları, matris faktörizasyonları ve çok değişkenli kalkülüsü takip eden portal." },
+  { name: "MML Textbook (Tam PDF)", url: "https://mml-book.github.io/book/mml-book.pdf", tag: "Kitap", desc: "Çevrimdışı matematiksel analiz için temel MML müfredatının doğrudan derlemesi." },
+  { name: "DeepLearning.AI", url: "https://learn.deeplearning.ai/", tag: "Müfredat", desc: "Yapısal model uygulamalarını ve ince ayar mekaniklerini parçalara ayıran kısa kurs modülleri." },
+  { name: "NumPy Quickstart Guide", url: "https://numpy.org/doc/stable/user/quickstart.html", tag: "Belgeler", desc: "Vektörleştirme, geniş dizi yapıları ve verimli koordinat dönüşümlerini özetleyen başvuru kılavuzu." },
+  { name: "Nitro-AI Preparation Hub", url: "https://olimpiada.nitro-ai.org/ro/prepare", tag: "Eğitim", desc: "Hedefli rekabetçi eğitim modülleri, geçmiş olimpiyat veri kümeleri ve ortam kurulumları." },
+  { name: "Pandas Cookbook", url: "https://pandas.pydata.org/pandas-docs/stable/user_guide/cookbook.html#cookbook", tag: "Belgeler", desc: "Veri çerçevesi temizleme, yapısal dilimleme ve özellik matrisi montajı için optimizasyon yolları." },
+  { name: "AI Club (Avalur)", url: "https://avalur.github.io/ai_club.html", tag: "Notlar", desc: "Özel yapay zeka havuzları için öğrenme yolları, algoritmik teori ve yarışma ipuçlarının yoğun derlemesi." },
+  { name: "NLTK Natural Language Book", url: "https://www.nltk.org/book/ch00.html", tag: "Kitap", desc: "Linguistik veri ayrıştırma, metin vektörleştirme ve tokenizasyon paradigmaları için kesin rehber." },
+  { name: "TensorFlow Playground", url: "https://playground.tensorflow.org/", tag: "Görselleştirici", desc: "Geri yayılımı, aktivasyon eşiklerini ve özellik haritalarını görselleştirmek için etkileşimli sinir ağı alanı." }
 ];
-
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="tr">
 	<head>
-		<BaseHead title={`Engineering Index | ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
+		<BaseHead title={`Mühendislik İndeksi | ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
 		<style>
 			main {
 				max-width: 800px;
@@ -72,8 +71,6 @@ const aiOlympiad = [
 				margin: 2.5rem 0 1rem 0;
 				letter-spacing: 0.5px;
 			}
-			
-			/* Active Judges Layout - Dense 2-Column Grid */
 			.judge-grid {
 				display: grid;
 				grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
@@ -104,10 +101,6 @@ const aiOlympiad = [
 				font-weight: 600;
 				font-size: 0.95rem;
 			}
-			.judge-card:hover .card-title {
-				color: #f0f6fc;
-				text-decoration: underline;
-			}
 			.badge {
 				font-family: var(--font-mono);
 				font-size: 0.75rem;
@@ -123,8 +116,6 @@ const aiOlympiad = [
 				margin: 0;
 				line-height: 1.4;
 			}
-
-			/* Reference List Layout - Clean Dense Rows */
 			.ref-list {
 				display: flex;
 				flex-direction: column;
@@ -162,9 +153,6 @@ const aiOlympiad = [
 				font-weight: 600;
 				font-size: 0.95rem;
 			}
-			.ref-row:hover .ref-title {
-				color: var(--accent-green);
-			}
 			.ref-desc {
 				color: var(--text-main);
 				font-size: 0.85rem;
@@ -177,12 +165,11 @@ const aiOlympiad = [
 		<Header />
 		<main>
 			<div class="intro-block">
-				<h1 style="font-family: var(--font-mono); margin: 0; font-size: 1.6rem;">~/olympiad-dashboard</h1>
-				<p>A centralized indexing of core judges, artificial intelligence theory environments, and curriculum trackers.</p>
+				<h1 style="font-family: var(--font-mono); margin: 0; font-size: 1.6rem;">~/bağlantı-indeksi</h1>
+				<p>Yargılayıcı çekirdeklerin, yapay zeka teori ortamlarının ve müfredat takipçilerinin merkezi indeksi.</p>
 			</div>
 
-			<!-- Core Evaluation Hubs -->
-			<div class="section-title"># IOI_ACTIVE_EVALUATION_ENVIRONMENTS</div>
+			<div class="section-title"># AKTİF_DEĞERLENDİRME_ORTAMLARI</div>
 			<div class="judge-grid">
 				{judges.map((j) => (
 					<a href={j.url} target="_blank" rel="noopener noreferrer" class="judge-card">
@@ -190,13 +177,12 @@ const aiOlympiad = [
 							<span class="card-title">{j.name} ↗</span>
 							<span class="badge">{j.badge}</span>
 						</div>
-						<p class="card-desc">{j.dev || j.desc}</p>
+						<p class="card-desc">{j.desc}</p>
 					</a>
 				))}
 			</div>
 
-			<!-- Curated Syllabus and Guides -->
-			<div class="section-title"># IOI_CORE_THEORY_AND_CURRICULUM_MATRICES</div>
+			<div class="section-title"># ÇEKİRDEK_TEORİ_VE_MÜFREDAT_MATRİSLERİ</div>
 			<div class="ref-list">
 				{references.map((r) => (
 					<a href={r.url} target="_blank" rel="noopener noreferrer" class="ref-row">
@@ -209,12 +195,11 @@ const aiOlympiad = [
 				))}
 			</div>
 
-			<!-- Core Mathematical & Algorithmic Literature -->
-			<div class="section-title"># REQUISITE_CORE_LITERATURE</div>
+			<div class="section-title"># ZORUNLU_ÇEKİRDEK_LİTERATÜR</div>
 			<div class="ref-list">
 				{literature.map((l) => (
 					<a href={l.url} target="_blank" rel="noopener noreferrer" class="ref-row">
-						<div class="type-tag" style="color: var(--accent);">[LIT]</div>
+						<div class="type-tag" style="color: var(--accent);">[LİT]</div>
 						<div class="ref-content">
 							<span class="ref-title">{l.name} <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: normal;">— {l.source}</span> ↗</span>
 							<p class="ref-desc">{l.desc}</p>
@@ -223,8 +208,7 @@ const aiOlympiad = [
 				))}
 			</div>
 
-			<!-- IOAI Architecture & Foundations -->
-			<div class="section-title"># IOAI_ARTIFICIAL_INTELLIGENCE_FOUNDATIONS</div>
+			<div class="section-title"># YAPAY_ZEKA_TEMELLERİ</div>
 			<div class="ref-list">
 				{aiOlympiad.map((ai) => (
 					<a href={ai.url} target="_blank" rel="noopener noreferrer" class="ref-row">

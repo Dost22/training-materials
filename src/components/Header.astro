@@ -8,18 +8,11 @@ import { SITE_TITLE } from '../consts';
 		<div class="brand">
 			<a href="/" style="color: var(--accent-green); font-weight: bold; font-family: var(--font-mono);">{SITE_TITLE}</a>
 		</div>
-		<div class="nav-right">
-			<div class="internal-links">
-				<HeaderLink href="/">~/home</HeaderLink>
-				<HeaderLink href="/blog">~/materials</HeaderLink>
-				<HeaderLink href="/links">~/links</HeaderLink>
-				<HeaderLink href="/hof">~/hof</HeaderLink>
-			</div>
-			<div class="lang-selector">
-				<button class="lang-btn active" data-lang="en">EN</button>
-				<span class="divider">/</span>
-				<button class="lang-btn" data-lang="tr">TR</button>
-			</div>
+		<div class="internal-links">
+			<HeaderLink href="/">~/ana-sayfa</HeaderLink>
+			<HeaderLink href="/blog">~/materyaller</HeaderLink>
+			<HeaderLink href="/links">~/bağlantılar</HeaderLink>
+			<HeaderLink href="/hof">~/hof</HeaderLink>
 		</div>
 	</nav>
 </header>
@@ -38,11 +31,6 @@ import { SITE_TITLE } from '../consts';
 		align-items: center;
 		padding: 0 1rem;
 	}
-	.nav-right {
-		display: flex;
-		align-items: center;
-		gap: 2rem;
-	}
 	header a {
 		color: var(--text-muted);
 		font-family: var(--font-mono);
@@ -53,74 +41,8 @@ import { SITE_TITLE } from '../consts';
 	header a.active, header a:hover {
 		color: var(--accent-green);
 	}
-	.lang-selector {
-		font-family: var(--font-mono);
-		font-size: 0.85rem;
-		color: var(--text-muted);
+	.internal-links {
 		display: flex;
-		align-items: center;
-		gap: 0.25rem;
-	}
-	.lang-btn {
-		background: none;
-		border: none;
-		color: var(--text-muted);
-		cursor: pointer;
-		font-family: inherit;
-		font-size: inherit;
-		padding: 0;
-		transition: color 0.1s ease;
-	}
-	.lang-btn:hover {
-		color: var(--accent);
-	}
-	.lang-btn.active {
-		color: var(--accent-green);
-		font-weight: bold;
-	}
-	.divider {
-		color: var(--border-color);
-		user-select: none;
+		gap: 0.5rem;
 	}
 </style>
-<script>
-	function initLang() {
-		const savedLang = localStorage.getItem('site-lang') || 'en';
-		updateLanguage(savedLang);
-
-		document.querySelectorAll('.lang-btn').forEach(btn => {
-			btn.addEventListener('click', (e) => {
-				const target = e.target as HTMLButtonElement;
-				const lang = target.getAttribute('data-lang') || 'en';
-				localStorage.setItem('site-lang', lang);
-				updateLanguage(lang);
-			});
-		});
-	}
-
-	function updateLanguage(lang: string) {
-		// Update button active states
-		document.querySelectorAll('.lang-btn').forEach(btn => {
-			if (btn.getAttribute('data-lang') === lang) {
-				btn.classList.add('active');
-			} else {
-				btn.classList.remove('active');
-			}
-		});
-
-		// Toggle visibility of elements with lang attributes
-		document.querySelectorAll('[data-text-en]').forEach(el => {
-			const element = el as HTMLElement;
-			if (lang === 'tr') {
-				element.textContent = element.getAttribute('data-text-tr');
-			} else {
-				element.textContent = element.getAttribute('data-text-en');
-			}
-		});
-	}
-
-	// Runs on initial load
-	initLang();
-	// Runs on Astro page navigation swaps
-	document.addEventListener('astro:after-swap', initLang);
-</script>

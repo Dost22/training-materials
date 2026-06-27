@@ -4,6 +4,7 @@ import Footer from '../components/Footer.astro';
 import BaseHead from '../components/BaseHead.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
+// [Önceki adımda onayladığın problemPool dizisi buraya eksiksiz gelecek]
 const problemPool = [
   {
     category: "Asia-Pacific Informatics Olympiad (APIO)",
@@ -144,7 +145,7 @@ const problemPool = [
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="tr">
 	<head>
 		<BaseHead title={`Hall of Fame | ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
 		<style>
@@ -217,8 +218,8 @@ const problemPool = [
 		<Header />
 		<main>
 			<div class="intro-block">
-				<h1 style="font-family: var(--font-mono); margin: 0; font-size: 1.6rem;">~/algorithmic-hof</h1>
-				<p>A high-density evaluation ledger tracking pristine, selective mathematical and algorithmic challenges.</p>
+				<h1 style="font-family: var(--font-mono); margin: 0; font-size: 1.6rem;">~/algoritmik-hof</h1>
+				<p>Üst düzey matematiksel ve algoritmik problemleri takip eden yüksek yoğunluklu değerlendirme matrisi.</p>
 			</div>
 
 			{problemPool.map((group) => (
@@ -227,7 +228,7 @@ const problemPool = [
 					<div class="grid-matrix">
 						{group.problems.map((prob) => (
 							<a href={prob.url} target="_blank" rel="noopener noreferrer" class="prob-card">
-								<span class="bracket-tag">[RUN]</span>
+								<span class="bracket-tag">[ÇALIŞTIR]</span>
 								<span class="prob-title">{prob.name} ↗</span>
 							</a>
 						))}

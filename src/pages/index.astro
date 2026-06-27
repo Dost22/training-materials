@@ -6,7 +6,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="tr">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 		<style>
@@ -32,26 +32,15 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 		<Header />
 		<main>
 			<div class="console-log">
-				<p style="margin: 0 0 1rem 0; color: var(--text-muted);" 
-				   data-text-en="// Session initialized successfully."
-				   data-text-tr="// Oturum başarıyla başlatıldı.">// Session initialized successfully.</p>
-				
+				<p style="margin: 0 0 1rem 0; color: var(--text-muted);">// Oturum başarıyla başlatıldı.</p>
 				<h1 style="font-size: 1.7rem; margin: 0 0 1rem 0; font-family: var(--font-mono);">
-					<span class="cursor">$</span> cat welcome.txt
+					<span class="cursor">$</span> cat hoşgeldiniz.txt
 				</h1>
-				
-				<p style="color: var(--text-main); line-height: 1.6; font-family: var(--font-sans);"
-				   data-text-en="Welcome to the archive. This platform hosts a curated collection of advanced competitive programming breakdowns, theoretical notes for artificial intelligence architectures, and structured reference material mappings."
-				   data-text-tr="Arşive hoş geldiniz. Bu platform; gelişmiş rekabetçi programlama analizleri, yapay zeka mimarilerine yönelik teorik notlar ve yapılandırılmış referans materyal haritalarından oluşan seçkin bir koleksiyona ev sahipliği yapmaktadır.">
-					Welcome to the archive. This platform hosts a curated collection of advanced competitive programming breakdowns, theoretical notes for artificial intelligence architectures, and structured reference material mappings.
+				<p style="color: var(--text-main); line-height: 1.6; font-family: var(--font-sans);">
+					Arşive hoş geldiniz. Bu platform; gelişmiş rekabetçi programlama analizleri, yapay zeka mimarilerine yönelik teorik notlar ve yapılandırılmış referans materyal haritalarından oluşan seçkin bir koleksiyona ev sahipliği yapmaktadır.
 				</p>
-				
 				<p style="margin: 1.5rem 0 0 0; font-size: 0.9rem; color: var(--text-muted);">
-					<span data-text-en="Navigate through" data-text-tr="Optimizasyon kılavuzlarını okumak için">Navigate through</span>
-					<a href="/blog" style="color: var(--accent);">~/materials</a>
-					<span data-text-en="to read optimization guides, or jump straight into the resource pools via" data-text-tr="kısmına göz atabilir veya kaynak havuzlarına doğrudan">to read optimization guides, or jump straight into the resource pools via</span>
-					<a href="/links" style="color: var(--accent);">~/links</a>
-					<span data-text-en="." data-text-tr="üzerinden erişebilirsiniz.">.</span>
+					Optimizasyon kılavuzlarını okumak için <a href="/blog" style="color: var(--accent);">~/materyaller</a> kısmına göz atabilir veya kaynak havuzlarına doğrudan <a href="/links" style="color: var(--accent);">~/bağlantılar</a> üzerinden erişebilirsiniz.
 				</p>
 			</div>
 		</main>
