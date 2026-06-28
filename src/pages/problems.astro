@@ -142,19 +142,20 @@ const problemPool = [
     ]
   }
 ];
+
 ---
 
 <!doctype html>
 <html lang="tr">
 	<head>
-		<BaseHead title={`Hall of Fame | ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
+		<BaseHead title={`Problemler | ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
 	</head>
 	<body>
 		<Header />
 		<main class="page-shell page-shell--wide">
 			<PageHero
-				path="/curated-problems"
-				description="Aklıma gelen sevdiğim soruların listesi — IOI, APIO, JOI ve daha fazlası."
+				path="/problemler"
+				description="Aklıma gelen sevdiğim soruların listesi: IOI, APIO, JOI ve daha fazlası."
 			/>
 
 			{problemPool.map((group) => (
@@ -162,7 +163,12 @@ const problemPool = [
 					<h2 class="section-label"># {group.category}</h2>
 					<div class="prob-grid">
 						{group.problems.map((prob) => (
-							<a href={prob.url} target="_blank" rel="noopener noreferrer" class="prob-card">
+							<a
+								href={prob.url}
+								target="_blank"
+								rel="noopener noreferrer"
+								class="prob-card"
+							>
 								<span class="prob-card__run">RUN</span>
 								<span class="prob-card__title">{prob.name} ↗</span>
 							</a>

@@ -1,23 +1,12 @@
-# Astro Starter Kit: Blog
+# Seferovic
 
-```sh
-npm create astro@latest -- --template blog
-```
+Dost Seferoğlu tarafından hazırlanan Türkçe competitive programming, algoritma ve
+IOAI kaynak arşivi.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Site; materyaller, seçilmiş problem listeleri, kaynak bağlantıları ve uzun vadede
+topluluk katkılarıyla büyüyebilecek bir Türk CP arşivi olmak için hazırlanıyor.
 
-Features:
-
-- ✅ Minimal styling (make it your own!)
-- ✅ 100/100 Lighthouse performance
-- ✅ SEO-friendly with canonical URLs and Open Graph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
-- ✅ Markdown & MDX support
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
+## Yapı
 
 ```text
 ├── public/
@@ -33,31 +22,40 @@ Inside of your Astro project, you'll see the following folders and files:
 └── tsconfig.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+Önemli klasörler:
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+- `src/pages/`: sayfalar ve rotalar
+- `src/content/blog/`: Markdown/MDX materyaller
+- `src/components/`: ortak arayüz parçaları
+- `src/styles/global.css`: global tema ve bileşen stilleri
 
-The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
+## Komutlar
 
-Any static assets, like images, can be placed in the `public/` directory.
+| Komut | Açıklama |
+| :-- | :-- |
+| `npm install` | Bağımlılıkları kurar |
+| `npm run dev` | Geliştirme sunucusunu açar |
+| `npm run build` | Statik siteyi `dist/` içine üretir |
+| `npm run preview` | Üretilen siteyi yerelde önizler |
 
-## 🧞 Commands
+## İçerik Ekleme
 
-All commands are run from the root of the project, from a terminal:
+Yeni bir materyal eklemek için `src/content/blog/` altına Markdown veya MDX dosyası
+ekleyin. Frontmatter alanları:
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+```md
+---
+title: "Başlık"
+description: "Kısa açıklama"
+pubDate: "Jun 27 2026"
+heroImage: "/src/assets/blog-placeholder-1.jpg"
+---
+```
 
-## 👀 Want to learn more?
+Problem ve bağlantı listeleri şimdilik ilgili sayfa dosyalarındaki veri dizilerinden
+yönetiliyor.
 
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## Notlar
 
-## Credit
-
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+`node_modules/`, `.venv/`, `.astro/` ve `dist/` yerel/generate edilmiş klasörlerdir;
+kaynak kodun parçası olarak tutulmamalıdır.

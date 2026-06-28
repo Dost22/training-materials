@@ -1,17 +1,18 @@
 ---
 title: "Lowest Common Ancestor & Binary Lifting"
-description: "Advanced tree techniques prepared for the national training camp."
+description: "Ağaç sorguları için LCA ve binary lifting notları."
 pubDate: "Jun 27 2026"
 heroImage: "/src/assets/blog-placeholder-1.jpg"
 ---
 
-Welcome to the training materials. Today we are optimizing queries on trees.
+Bu yazıda ağaçlar üzerinde ata sorgularını ve iki düğümün en düşük ortak atasını
+verimli bulmak için kullanılan binary lifting fikrini toparlıyoruz.
 
-### Complexity Analysis
-Building the sparse table takes $O(N \log N)$ time, allowing each query to run in:
+### Karmaşıklık Analizi
+Sparse table yapısını kurmak $O(N \log N)$ zaman alır. Sonrasında her LCA sorgusu:
 $$O(\log N)$$
 
-### Core Implementation
+### Temel İskelet
 ```cpp
 #include <bits/stdc++.h>
 using namespace std;

@@ -5,6 +5,7 @@ dist/
 
 # dependencies
 node_modules/
+.venv/
 
 # logs
 npm-debug.log*
@@ -24,7 +25,3 @@ pnpm-debug.log*
 .idea/
 .aider*
 .aider.tags.cache.v4/
-.aider*
-.aider.tags.cache.v4/
-.aider*
-requirements.txt

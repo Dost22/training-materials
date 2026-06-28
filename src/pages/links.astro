@@ -64,74 +64,84 @@ const youtubeChannels = [
 				description="Online judge'lar, dökümantasyonlar ve olimpiyat hazırlık kaynaklarının merkezi indeksi."
 			/>
 
-			<h2 class="section-label"># online_judges</h2>
-			<div class="card-grid">
-				{judges.map((j) => (
-					<a href={j.url} target="_blank" rel="noopener noreferrer" class="resource-card">
-						<div class="resource-card__header">
-							<span class="resource-card__title">{j.name} ↗</span>
-							<span class="badge">{j.badge}</span>
-						</div>
-						<p class="resource-card__desc">{j.desc}</p>
-					</a>
-				))}
-			</div>
+			<section>
+				<h2 class="section-label"># online_judges</h2>
+				<div class="card-grid">
+					{judges.map((j) => (
+						<a href={j.url} target="_blank" rel="noopener noreferrer" class="resource-card">
+							<div class="resource-card__header">
+								<span class="resource-card__title">{j.name} ↗</span>
+								<span class="badge">{j.badge}</span>
+							</div>
+							<p class="resource-card__desc">{j.desc}</p>
+						</a>
+					))}
+				</div>
+			</section>
 
-			<h2 class="section-label"># syllabus_and_resources</h2>
-			<div class="ref-list">
-				{references.map((r) => (
-					<a href={r.url} target="_blank" rel="noopener noreferrer" class="ref-row">
-						<span class="ref-row__tag">[{r.type}]</span>
-						<div>
-							<span class="ref-row__title">{r.name} ↗</span>
-							<p class="ref-row__desc">{r.desc}</p>
-						</div>
-					</a>
-				))}
-			</div>
+			<section>
+				<h2 class="section-label"># syllabus_and_resources</h2>
+				<div class="ref-list">
+					{references.map((r) => (
+						<a href={r.url} target="_blank" rel="noopener noreferrer" class="ref-row">
+							<span class="ref-row__tag">[{r.type}]</span>
+							<div>
+								<span class="ref-row__title">{r.name} ↗</span>
+								<p class="ref-row__desc">{r.desc}</p>
+							</div>
+						</a>
+					))}
+				</div>
+			</section>
 
-			<h2 class="section-label"># core_literature</h2>
-			<div class="ref-list">
-				{literature.map((l) => (
-					<a href={l.url} target="_blank" rel="noopener noreferrer" class="ref-row">
-						<span class="ref-row__tag" style="color: var(--accent);">[Literature]</span>
-						<div>
-							<span class="ref-row__title">
-								{l.name}
-								<span style="font-size: 0.8rem; color: var(--text-muted); font-weight: normal;"> — {l.source}</span>
-								↗
-							</span>
-							<p class="ref-row__desc">{l.desc}</p>
-						</div>
-					</a>
-				))}
-			</div>
+			<section>
+				<h2 class="section-label"># core_literature</h2>
+				<div class="ref-list">
+					{literature.map((l) => (
+						<a href={l.url} target="_blank" rel="noopener noreferrer" class="ref-row">
+							<span class="ref-row__tag ref-row__tag--accent">[Literature]</span>
+							<div>
+								<span class="ref-row__title">
+									{l.name}
+									<span class="ref-row__meta"> — {l.source}</span>
+									↗
+								</span>
+								<p class="ref-row__desc">{l.desc}</p>
+							</div>
+						</a>
+					))}
+				</div>
+			</section>
 
-			<h2 class="section-label"># machine_learning_theory</h2>
-			<div class="ref-list">
-				{aiOlympiad.map((ai) => (
-					<a href={ai.url} target="_blank" rel="noopener noreferrer" class="ref-row">
-						<span class="ref-row__tag badge--purple" style="background: none; border: none; padding: 0;">/* {ai.tag} */</span>
-						<div>
-							<span class="ref-row__title">{ai.name} ↗</span>
-							<p class="ref-row__desc">{ai.desc}</p>
-						</div>
-					</a>
-				))}
-			</div>
+			<section>
+				<h2 class="section-label"># machine_learning_theory</h2>
+				<div class="ref-list">
+					{aiOlympiad.map((ai) => (
+						<a href={ai.url} target="_blank" rel="noopener noreferrer" class="ref-row">
+							<span class="ref-row__tag ref-row__tag--purple">/* {ai.tag} */</span>
+							<div>
+								<span class="ref-row__title">{ai.name} ↗</span>
+								<p class="ref-row__desc">{ai.desc}</p>
+							</div>
+						</a>
+					))}
+				</div>
+			</section>
 
-			<h2 class="section-label"># recommended_youtube</h2>
-			<div class="ref-list">
-				{youtubeChannels.map((yt) => (
-					<a href={yt.url} target="_blank" rel="noopener noreferrer" class="ref-row">
-						<span class="ref-row__tag" style="color: #ff7b72;">[YT // {yt.tag}]</span>
-						<div>
-							<span class="ref-row__title">{yt.name} ↗</span>
-							<p class="ref-row__desc">{yt.desc}</p>
-						</div>
-					</a>
-				))}
-			</div>
+			<section>
+				<h2 class="section-label"># recommended_youtube</h2>
+				<div class="ref-list">
+					{youtubeChannels.map((yt) => (
+						<a href={yt.url} target="_blank" rel="noopener noreferrer" class="ref-row">
+							<span class="ref-row__tag ref-row__tag--red">[YT // {yt.tag}]</span>
+							<div>
+								<span class="ref-row__title">{yt.name} ↗</span>
+								<p class="ref-row__desc">{yt.desc}</p>
+							</div>
+						</a>
+					))}
+				</div>
+			</section>
 		</main>
 		<Footer />
 	</body>

@@ -5,10 +5,11 @@ import Footer from '../components/Footer.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 
 const quickLinks = [
-	{ href: '/blog', icon: '📚', label: '~/materyaller', hint: 'Tutorials & rehberler' },
-	{ href: '/links', icon: '🔗', label: '~/bağlantılar', hint: 'Judge & kaynak havuzu' },
-	{ href: '/problems', icon: '⚡', label: '~/problems', hint: 'Seçilmiş olimpiyat soruları' },
-	{ href: '/contact', icon: '✉', label: '~/iletisim', hint: 'Öneri & geri bildirim' },
+	{ href: '/about', icon: 'ID', label: '~/hakkında', hint: 'Ben ve sitenin vizyonu' },
+	{ href: '/blog', icon: 'MD', label: '~/materyaller', hint: 'Tutoriallar & kamp notları' },
+	{ href: '/links', icon: 'LN', label: '~/bağlantılar', hint: 'Judge & kaynak havuzu' },
+	{ href: '/problems', icon: 'AC', label: '~/problemler', hint: 'Seçilmiş olimpiyat soruları' },
+	{ href: '/contact', icon: 'TX', label: '~/iletişim', hint: 'Öneri & geri bildirim' },
 ];
 ---
 
@@ -32,11 +33,13 @@ const quickLinks = [
 					<p class="terminal-prompt">
 						<span class="prompt-char">$</span> cat hoşgeldiniz.txt<span class="cursor-blink"></span>
 					</p>
-					<p style="color: var(--text-main); line-height: 1.7; margin: 0 0 1rem; max-width: 58ch;">
-						Arşive hoş geldiniz. Bu platform kendi tecrübelerime göre amatörce vibe-codeladığım bir Türk CP/IOAI arşiv sitesi. Zamanla CodeForces ve AtCoder soruları da ekleyerek ve kafama estikçe tutoriallar paylaşarak sayfayı genişletmeye çalışacağım...
+					<p class="terminal-copy">
+						Arşive hoş geldiniz. Seferovic; Türkiye'de competitive programming ve IOAI
+						çalışanlar için hazırladığım, kendi yolculuğumda işime yarayan kaynakları,
+						problemleri ve notları bir araya getiren Türkçe bir çalışma alanı.
 					</p>
-					<p style="margin: 0; font-size: 0.88rem; color: var(--text-muted); font-family: var(--font-mono);">
-						<span style="color: var(--accent-green);">→</span> Hızlı erişim aşağıda. İyi çalışmalar.
+					<p class="terminal-note">
+						<span aria-hidden="true">-&gt;</span> Hızlı erişim aşağıda. İyi çalışmalar.
 					</p>
 				</div>
 			</section>
