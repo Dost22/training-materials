@@ -1,4 +1,4 @@
-export const SITE_TITLE = 'Seferovic';
+export const SITE_TITLE = 'UBILO';
 export const SITE_DESCRIPTION =
-	'Dost Seferoğlu tarafından hazırlanan Türkçe competitive programming, algoritma ve IOAI kaynak arşivi.';
+	'Ulusal Bilgisayar Olimpiyatı ve competitive programming için Türkçe kaynak, problem ve materyal arşivi.';
 export const SITE_URL = 'https://seferovic.vercel.app';

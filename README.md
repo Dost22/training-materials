@@ -1,10 +1,11 @@
-# Seferovic
+# UBILO
 
-Dost Seferoğlu tarafından hazırlanan Türkçe competitive programming, algoritma ve
-IOAI kaynak arşivi.
+Ulusal Bilgisayar Olimpiyatı ve competitive programming için Türkçe kaynak,
+problem ve materyal arşivi.
 
-Site; materyaller, seçilmiş problem listeleri, kaynak bağlantıları ve uzun vadede
-topluluk katkılarıyla büyüyebilecek bir Türk CP arşivi olmak için hazırlanıyor.
+Site Dost Seferoğlu tarafından başlatıldı; uzun vadede materyaller, seçilmiş
+problem listeleri, kaynak bağlantıları ve topluluk katkılarıyla büyüyebilecek bir
+Türk CP arşivi olması hedefleniyor.
 
 ## Yapı
 
