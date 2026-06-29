@@ -6,7 +6,7 @@ import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 
 export default defineConfig({
-	site: 'https://seferovic.vercel.app',
+	site: 'https://ubilo.vercel.app',
 	integrations: [mdx(), sitemap()],
 	markdown: {
 		processor: unified({
